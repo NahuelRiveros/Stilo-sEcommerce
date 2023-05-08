@@ -1,0 +1,87 @@
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import StarRateIcon from '@mui/icons-material/StarRate';
+
+const InfoPorducto = () => {
+    const [detalles, setDetalles] = useState({})
+    const location = useLocation()
+    //El location contiene toda la informacion del articulo que se selecciono, para mas info hacer console.log
+    useEffect(() => {
+        console.log(location.state.item)
+        setDetalles(location.state.item)
+    }, [])
+    return (
+        <div>
+            <div className='max-w-screen-lg mx-auto my-10 flex gap-10'>
+                <div className='w-2/5 relative'>
+                    <img className='w-full h-[400px] object-cover' src={detalles.image} alt={detalles.name} />
+                    {/* Aqui pordemos poner lo que necesitemos encaso de que sea oferta o algo parecido */}
+                    <div className='top-5 right-0 absolute'>
+                        <p className='bg-black text-white font-semibold font-bodyFont py-1 px-8'>
+                            Info
+                        </p>
+
+                    </div>
+                </div>
+                <div className='w-3/5 flex flex-col justify-center gap-12'>
+                    <div>
+                        <p className='font-bodyFont text-4xl font-bold'>
+                            {detalles.name}
+                        </p>
+                        <div className='flex items-center gap-5 mt-3'>
+                            <p className='text-2xl font-mono'>Precio: {detalles.price}</p>
+                            {/* En caso de tener ofertas */}
+                            {/* <p className='text-2xl font-mono line-through'>{detalles.price}</p> */}
+                        </div>
+                    </div>
+                    <div className='flex gap-2 items-center text-base'>
+                        <div className='flex'>
+
+                            <StarRateIcon />
+                            <StarRateIcon />
+                            <StarRateIcon />
+                            <StarRateIcon />
+                            <StarRateIcon />
+
+                        </div>
+                        <p className='text-xs text-gray-500'> (0 Vistas)
+                        </p>
+                    </div>
+                    {/* <p className='text-base -mt-3 text-gray-500'>`{detalles.name} marca {detalles.brand} talle`</p> */}
+                    <p className='text-base -mt-3 text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, laboriosam quidem. Repellendus reiciendis adipisci eos quis iusto exercitationem qui mollitia. Deleniti ratione asperiores at praesentium molestias beatae veniam placeat reiciendis.</p>
+                    <div className='flex gap-2'>
+                        <div className='w-52 flex items-center justify-between gap-4 text-gray-500 border p-3 shadow-md'>
+
+                            <p className='text-sm font-bodyFont'>Cantidad</p>
+                            <div className='flex item gap-4 text-sm font-semibold '>
+                                <button className='border text-lg h-5 font-normal px-2 flex 
+                                items-center justify-center
+                                hover:text-white 
+                                cursor-pointer 
+                                hover:bg-gray-700
+                                duration-300 active:bg-black'>-</button>
+                                <span>{1}</span>
+                                <button className='border text-lg h-5 font-normal px-2 flex 
+                                items-center justify-center
+                                hover:text-white 
+                                cursor-pointer 
+                                hover:bg-gray-700
+                                duration-300 active:bg-black'>+</button>
+                            </div>
+                        </div>
+                                <button className='bg-gray-700 text-white gap-1 flex py-3 px-6  active:bg-orange-700'>add</button>
+                    </div>
+                    {/* aqui podria ir si este articulo es de mujero o hombre */}
+                    <p className='text-base text-gray-500'>
+                        Caregoria: 
+                        <span className='font-medium capitalize'>
+                         {detalles.brand}
+                        </span>
+                        </p>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default InfoPorducto
