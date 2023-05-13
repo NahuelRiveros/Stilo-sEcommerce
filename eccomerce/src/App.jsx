@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Footer from './components/footer'
 import Card from './pages/Card'
 import InfoPorducto from './components/infoProducto'
+import Login from './pages/Login'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -21,7 +22,7 @@ const product=()=>{
   image: 'https://via.placeholder.com/150',
   brand: 'Levi\'s',
   size: 'L',
-  price: '$1,000'
+  price: 1000
 },
 {
   id: 2,
@@ -29,7 +30,7 @@ const product=()=>{
   image: 'https://via.placeholder.com/150',
   brand: 'Zara',
   size: 'M',
-  price: '$800'
+  price: 800
 },
 {
   id: 3,
@@ -37,7 +38,7 @@ const product=()=>{
   image: 'https://via.placeholder.com/150',
   brand: 'Adidas',
   size: '8',
-  price: '$1,500'
+  price: 1500
 }
 ,
 {
@@ -46,7 +47,7 @@ const product=()=>{
   image: 'https://via.placeholder.com/150',
   brand: 'Adidas',
   size: '8',
-  price: '$1,500'
+  price: 1500
 },{
 
   id: 5,
@@ -54,7 +55,7 @@ const product=()=>{
   image: 'https://via.placeholder.com/150',
   brand: 'Levi\'s',
   size: 'L',
-  price: '$1,000'
+  price: 1000
 },
 {
   id: 6,
@@ -62,7 +63,7 @@ const product=()=>{
   image: 'https://via.placeholder.com/150',
   brand: 'Zara',
   size: 'M',
-  price: '$800'
+  price: 800
 },
 {
   id: 7,
@@ -70,7 +71,7 @@ const product=()=>{
   image: 'https://via.placeholder.com/150',
   brand: 'Adidas',
   size: '8',
-  price: '$1,500'
+  price: 1500,
 }
 ,
 {
@@ -79,7 +80,7 @@ const product=()=>{
   image: 'https://via.placeholder.com/150',
   brand: 'Adidas',
   size: '8',
-  price: '$1,500'
+  price: 1500,
 }]
   return pepe
 }
@@ -89,10 +90,10 @@ const Layout=()=>{
   return (
     <div>
       <Navbar/>
-      {/* //invetigas bien estas funciones */}
+      {/* //invetigar bien estas funciones */}
       <ScrollRestoration/>
       <Outlet/>
-      {/* //invetigas bien estas funciones */}
+      {/* //invetigar bien estas funciones */}
       <Footer/>
     </div>
   )
@@ -114,6 +115,10 @@ const router= createBrowserRouter([{
   {
     path:'card',
     element:<Card/>
+  },
+  {
+    path:'/login',
+    element: <Login/>
   }
 ]
 }])

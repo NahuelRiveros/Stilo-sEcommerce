@@ -15,6 +15,7 @@ const Product = ({productos}) => {
         </div>
         <div className='max-w-screen-xl mx-auto py-10 grid grid-cols-5 gap-10'>
 
+{/* Aqui se EJECUTAN las card desordenadas y se envia al componente card los datos necesarios por el props product */}
         {productos.map((item)=>(
           <ProductCard key={item.id} product={item}/>
         ))}

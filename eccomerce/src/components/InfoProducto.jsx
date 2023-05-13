@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import StarRateIcon from '@mui/icons-material/StarRate';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/bazarSlice';
+import { ToastContainer, toast } from 'react-toastify';
 
 const InfoPorducto = () => {
+    const dispatch = useDispatch()
     const [detalles, setDetalles] = useState({})
     const location = useLocation()
+    //Manejar la cantidad del ADD
+    let [baseCant, setBaseCant] = useState(1)
     //El location contiene toda la informacion del articulo que se selecciono, para mas info hacer console.log
     useEffect(() => {
-        console.log(location.state.item)
+
+        // console.log(location.state.item) 
+        //sirve para ver el producto seleccionado en la imagen
         setDetalles(location.state.item)
     }, [])
     return (
@@ -59,17 +67,24 @@ const InfoPorducto = () => {
                                 hover:text-white 
                                 cursor-pointer 
                                 hover:bg-gray-700
-                                duration-300 active:bg-black'>-</button>
-                                <span>{1}</span>
+                                duration-300 active:bg-black' onClick={()=>setBaseCant(baseCant === 1 ? (baseCant=1):baseCant-1)}>-</button>
+                                <span>{baseCant}</span>
                                 <button className='border text-lg h-5 font-normal px-2 flex 
                                 items-center justify-center
                                 hover:text-white 
                                 cursor-pointer 
                                 hover:bg-gray-700
-                                duration-300 active:bg-black'>+</button>
+                                duration-300 active:bg-black' onClick={()=>setBaseCant(baseCant + 1)}>+</button>
                             </div>
                         </div>
-                                <button className='bg-gray-700 text-white gap-1 flex py-3 px-6  active:bg-orange-700'>add</button>
+                                <button className='bg-gray-700 text-white gap-1 flex py-3 px-6  active:bg-orange-700'onClick={()=>dispatch(addToCart({
+                                    id: detalles.id,
+                                    title: detalles.name,
+                                    image: detalles.image,
+                                    marca: detalles.brand,
+                                    price: detalles.price,
+                                    cantidad: baseCant
+                                })) & toast.success(`se agrego ${baseCant} ${detalles.name} al carro`) }>add</button>
                     </div>
                     {/* aqui podria ir si este articulo es de mujero o hombre */}
                     <p className='text-base text-gray-500'>
@@ -80,6 +95,18 @@ const InfoPorducto = () => {
                         </p>
                 </div>
             </div>
+            <ToastContainer
+            position='top-left'
+            autoClose={2000}
+            hideProgressBar={false}
+            newesOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme='dark'
+        />
         </div>
     )
 }

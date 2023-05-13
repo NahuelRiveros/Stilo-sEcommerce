@@ -3,7 +3,14 @@ import { logo1, logo2, logo3 } from '../assets/logo'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+
 const Navbar = () => {
+    // bazar esta creado en store
+    const productData = useSelector((state) => state.bazar.productData);
+    console.log(productData)
+
     return (
         <div className='w-full h-20 bg-white
     border-b-[1px] border-b-gray-800 font-titleFont sticky top-0 z-50' >
@@ -30,18 +37,22 @@ const Navbar = () => {
                         </li>
 
                     </ul>
+                    <Link to={'/card'}>
                     <div className='relative'>
                         <ShoppingBagOutlinedIcon fontSize='large' />
                         <span className='absolute w-6 top-3 left-1 text-sm flex items-center justify-center font-semibold'>
-                            0
+                            {productData.length}
                         </span>
                     </div>
+                    </Link>
+                    <Link to={'/login'}>
                     <img src={'https://images.pexels.com/photos/264547/pexels-photo-264547.jpeg?auto=compress&cs=tinysrgb&w=400'} alt="3" className='w-8 h-8 rounded-full' />
+                    </Link>
 
                 </div>
             </div>
 
-
+        
         </div>
     )
 }

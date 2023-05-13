@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/bazarSlice';
+import { ToastContainer, toast } from 'react-toastify';
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch()
   console.log(product)
@@ -12,6 +13,7 @@ const ProductCard = ({ product }) => {
   const idString = (producSelectHandle)=>{
     return String(producSelectHandle).toLowerCase().split(' ').join('');
   }
+  //FUNCION REFORMAR EL NOMBRE DE LA RUTA Y DIRECCIONAR A OTRA PAGINA
   const rootId = idString(producSelectHandle)
   console.log(rootId)
   //Rutas al dar click en el evento
@@ -39,18 +41,19 @@ const ProductCard = ({ product }) => {
             <div className='flex gap-2 transform group-hover:translate-x-24 transition-transform duration-500'>
 
               {/* SIRVE PARA OFERTAS <p className='line-through text-gray-500'>{product.price}</p> */}
-              <p className='font-serif'>{product.price}</p>
+              <p className='font-serif'>${product.price}</p>
             </div>
             <div >
+              {/* Falta agregar una descipcion al producto */}
               <span onClick={()=>dispatch(addToCart({
                 id: product.id,
                 title: product.name,
                 image: product.image,
-                marca: product.marca,
+                marca: product.brand,
                 price: product.price,
                 cantidad: 1
               
-            }))
+            })) & toast.success(`se agrego ${product.name} al carro`)
                } className='absolute z-20 w-[100px] text-gray-400 hover:text-orange-400 flex-item-center gap-1 -top-0.5 transform -translate-x-32 group-hover:-translate-x-8 transition-transform cursor-pointer duration-500 '><AddShoppingCartIcon/></span>
             </div>
           </div>
@@ -65,6 +68,19 @@ const ProductCard = ({ product }) => {
             <p>Talle {product.size}</p>
           </div>
       </div>
+      
+      <ToastContainer
+            position='top-left'
+            autoClose={2000}
+            hideProgressBar={false}
+            newesOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme='dark'
+        />
     </div>
   )
 }
