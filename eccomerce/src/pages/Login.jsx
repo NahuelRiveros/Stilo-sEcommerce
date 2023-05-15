@@ -47,7 +47,7 @@ const Login = () => {
       });
   };
 
-  // ========== GOOGLE SING OUT ===========
+  // ========== GOOGLE SING OUT o LOG OUT ===========
   const handleSingOut=()=>{
     signOut(auth).then(()=>{
       toast.success('Cerro sesión con éxito!')

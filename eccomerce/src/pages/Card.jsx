@@ -2,9 +2,19 @@ import React, { useState,useEffect} from 'react'
 import { useSelector } from 'react-redux'
 import { logoStilo } from '../assets/logo'
 import CardCarrito from '../components/CardCarrito'
+import { toast } from 'react-toastify'
+import StripeChekout from 'react-stripe-checkout'
+
 const Card = () => {
+
+  // ========== INFORMACION DEL PRODUCTO PARA CARRITO COMPRA Y  ELMINAR CARRITO ===========
   const productData = useSelector((state)=> state.bazar.productData)
+  //-======= INFORMACION DEL USUARIO SI LOGEO O NO =============
+  const userInfo = useSelector((state)=>state.bazar.userInfo)
+  
   const [totalMonto, setTotalMonto] = useState('')
+
+  const [pagoAhora, setPagoAhora] = useState(false)
   // funcion para setear los precios totales y sub total de los articulos que agrego la persona
   useEffect(()=> {
     let price=0;
@@ -15,6 +25,16 @@ const Card = () => {
     // console.log(price)
     setTotalMonto(price.toFixed(2))
   }, [productData])
+
+  // ========== FUNCION DE CHEQUEO DE COMPRA ================
+
+  const checkCompra =()=>{
+    if(userInfo){
+      setPagoAhora(true)
+    }else{
+      toast.error('Por favor inicie secion antes de realizar una compra')
+    }
+  }
   
   // console.log(producData)
   return (
@@ -41,7 +61,21 @@ const Card = () => {
             <p className='font-titleFont font-semibold flex justify-between mt-6'>
               Total <span className='text-xl font-bold'>$ {totalMonto}</span>
             </p>
-            <button className='bg-[rgb(0,0,0)] text-[rgb(250,250,250)] w-full py-3 mt-6 text-base hover:bg-orange-700 duration-300 cursor-pointer'> Procesar Compra</button>
+            <button onClick={checkCompra} className='bg-[rgb(0,0,0)] text-[rgb(250,250,250)] w-full py-3 mt-6 text-base hover:bg-orange-700 duration-300 cursor-pointer'> Procesar Compra</button>
+            {
+              pagoAhora && 
+              <div className='w-full mt-6 flex items-center justify-center'>
+                <StripeChekout
+                stripeKey='pk_test_51N82iGAc7XQMw9zULTk3GWXFalAW2eQJ1eeiKj6Tn2omp5LQUVcla09l2jRMSLpMYEuxyvHcVUI9BubXkxVxbCUZ001EtX7RqT'
+                name='Stilos Online'
+                amount={totalMonto * 100}
+                label='pago a Stilo`s'
+                description={`tu monto total a pagar es $${totalMonto}`}
+                email={userInfo.email}
+                // token={pagoAhora}
+                ></StripeChekout>
+              </div>
+            }
         </div>
       </div>
     </div>
