@@ -1,10 +1,10 @@
-import React, { useState,useEffect} from 'react'
-import { useSelector } from 'react-redux'
-import { logoStilo } from '../assets/logo'
-import CardCarrito from '../components/CardCarrito'
-import { toast } from 'react-toastify'
-import StripeChekout from 'react-stripe-checkout'
-
+import React, { useState,useEffect} from 'react';
+import { useSelector } from 'react-redux';
+import { logoStilo } from '../assets/logo';
+import CardCarrito from '../components/CardCarrito';
+import { toast } from 'react-toastify';
+import StripeChekout from 'react-stripe-checkout';
+import axios from 'axios';
 const Card = () => {
 
   // ========== INFORMACION DEL PRODUCTO PARA CARRITO COMPRA Y  ELMINAR CARRITO ===========
@@ -34,6 +34,13 @@ const Card = () => {
     }else{
       toast.error('Por favor inicie secion antes de realizar una compra')
     }
+  };
+  const pagoComprob = async(token)=>{
+    await axios.post('http://localhost:8000/pagos', {
+      amount: totalMonto * 100,
+      token: token,
+
+  })
   }
   
   // console.log(producData)
@@ -72,7 +79,7 @@ const Card = () => {
                 label='pago a Stilo`s'
                 description={`tu monto total a pagar es $${totalMonto}`}
                 email={userInfo.email}
-                // token={pagoAhora}
+                token={pagoComprob}
                 ></StripeChekout>
               </div>
             }
