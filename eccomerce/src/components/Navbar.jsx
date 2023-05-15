@@ -1,14 +1,17 @@
 import React from 'react'
-import { logo1, logo2, logo3 } from '../assets/logo'
+import { User, logo1, logo2, logo3 } from '../assets/logo'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 const Navbar = () => {
     // bazar esta creado en store
     const productData = useSelector((state) => state.bazar.productData);
+    const userInfo = useSelector((state)=> state.bazar.userInfo)
+
+    console.log(userInfo)
     console.log(productData)
 
     return (
@@ -46,8 +49,13 @@ const Navbar = () => {
                     </div>
                     </Link>
                     <Link to={'/login'}>
-                    <img src={'https://images.pexels.com/photos/264547/pexels-photo-264547.jpeg?auto=compress&cs=tinysrgb&w=400'} alt="3" className='w-8 h-8 rounded-full' />
+                    <img src={userInfo ? userInfo.image : User } alt="3" className='w-8 h-8 rounded-full' />
                     </Link>
+                    {
+                        userInfo && <p className='text-base font-bodyFont font-semibold underline underline-offset-2'>
+                            {userInfo.name}
+                        </p>
+                    }
 
                 </div>
             </div>

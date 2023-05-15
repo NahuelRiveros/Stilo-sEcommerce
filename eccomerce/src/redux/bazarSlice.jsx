@@ -45,9 +45,17 @@ export const bazarSlice =createSlice({
       }else {
         item.cantidad--;
       }
+    },
+    // =================== USER Logeado ================
+    addUser: (state, action)=>{
+      state.userInfo= action.payload
+    },
+    removeUser: (state, action)=>{
+      state.userInfo=null
     }
+    // =================== USER Logeado ================
   }
 })
 
-export const { addToCart,deleteItem,incrementCantidad,descreaseCantidad,resetCart} = bazarSlice.actions;
+export const { addToCart,deleteItem,incrementCantidad,descreaseCantidad,resetCart, addUser, removeUser} = bazarSlice.actions;
 export default bazarSlice.reducer;
