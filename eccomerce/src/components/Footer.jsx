@@ -11,10 +11,14 @@ const Footer = () => {
     return (
         <div className='bg-black text-[rgb(90,90,90)] 
         py-10 font-otherFont font-semibold'>
-            <div className='max-w-screen-xl mx-auto grid grid-cols-4'>
+            {/* AJUSTE DE TAMANOS */}
+            <div className='max-w-screen-xl mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 min-[320px]:gap-10'>
                 {/* Logo start  end*/}
                 <div className='flex flex-col gap-7  items-center '>
-                    <img src={logo2} className='w-16 rounded-full' alt='logoEmp'></img>
+                    <div className='cursor-pointer rounded-full w-16 group'>
+
+                        <img src={logo2} className=' rounded-full h-full object-cover group-hover:scale-125 duration-500' alt='logoEmp'></img>
+                    </div>
                     <p className='text-white text-sm tracking-wide'>© MR.com</p>
                     <img src={logoCards} alt="imgMP" className='w-36' />
                     <div className='flex gap-3 text-lg text-gray-400'>
@@ -61,10 +65,13 @@ const Footer = () => {
 
                 </div>
                 {/* Profile end */}
-                <div className='flex flex-col justify-center w-60 h-44 font-titleFont text-white'>
+                <div className='flex flex-col justify-center items-center text-center content-center font-titleFont text-white gap-1'>
+                    <h2 className='text-2xl font-semibold font-otherFont text-white mb-4 text-center'>
+                        Suscribirse a Ofertas
+                    </h2>
                     <input type="email" className='bg-transparent text-center border px-4 text-sm'
                         placeholder='e-mail' />
-                    <button className=' hover:text-orange-700 border bg-transparent text-white'> Suscribe </button>
+                    <button className=' hover:bg-orange-700 border  text-white rounded-lg max-[600px]:bg-orange-700 bg-transparent'> Suscribe </button>
                     <p className='text-center pt-2 max-w-[300px]'>Todos los derechos reservados</p>
                     <p className='text-center pt-2 max-w-[300px]'>Stilo`s S.R.L</p>
                 </div>
