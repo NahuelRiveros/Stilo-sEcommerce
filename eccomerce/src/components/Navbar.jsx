@@ -13,6 +13,10 @@ const Navbar = () => {
     const productData = useSelector((state) => state.bazar.productData);
     const userInfo = useSelector((state) => state.bazar.userInfo)
 
+    const fetchArt = (ruta) => {
+
+    }
+
     console.log(userInfo)
     console.log(productData)
     const [open, setOpen] = useState(false);

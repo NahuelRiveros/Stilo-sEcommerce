@@ -70,6 +70,7 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
 
+      {/* Alert */}
       <ToastContainer
         position='top-left'
         autoClose={2000}

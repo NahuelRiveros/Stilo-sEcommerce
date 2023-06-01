@@ -7,6 +7,7 @@ import Footer from './components/footer'
 import Card from './pages/Card'
 import InfoPorducto from './components/infoProducto'
 import Login from './pages/Login'
+import FetArt from './components/ArtFetch/FetArt'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -121,6 +122,10 @@ const router = createBrowserRouter([{
     {
       path: '/login',
       element: <Login />
+    },
+    {
+      path: '/Producto/:id',
+      element: <FetArt />
     }
   ]
 }])

@@ -1,37 +1,54 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { links } from "./Mylinks";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import LabelIcon from '@mui/icons-material/Label';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 const NavLinks = () => {
   const [heading, setHeading] = useState("");
   const [subHeading, setSubHeading] = useState("");
+  const navigate = useNavigate()
+  const FormateoURI = (uri) => {
+    return
+  }
+  const fetchProduct = (uri, marca) => {
+    const formateoURI = String(uri).toLowerCase().split('/').join('');
+    console.log(`-> ${formateoURI} -> ${marca}`)
+    navigate(`/Producto/${formateoURI}`, { state: { articulo: formateoURI, marca: marca } })
+
+  }
+
+
+
   return (
     <>
       {links.map((link) => (
-        <div>
-          <div className="px-3 text-left md:cursor-pointer group ">
-            {/* LINKS */}
-            <h1
-              className="py-7 flex justify-start items-center md:pr-0 pr-5 group"
+        <div key={link.id}>
+          <div className="px-3 text-left md:cursor-pointer group" >
+            {/* LINK 1 PRIMARIO */}
+            <h2
+
+              className="py-5 flex justify-start items-center md:pr-0 pr-5 group"
               onClick={() => {
                 heading !== link.name ? setHeading(link.name) : setHeading("");
                 setSubHeading("");
               }}
             >
               {link.name}
-              <span className="text-xl md:hidden inline">
-                <ExpandMoreIcon
 
-                ></ExpandMoreIcon>
-              </span>
               <span className="text-xl md:mt-1 md:ml-2  md:block hidden group-hover:rotate-180">
-                <ExpandMoreIcon ></ExpandMoreIcon>
+                <ArrowDropUpIcon ></ArrowDropUpIcon>
               </span>
-            </h1>
+            </h2>
+            {/* LINK 1 PRIMARIO */}
+
+            {/* LINK SUB 2 MENU */}
+            {/* PREGUNTA SI ESTA ABILITADO EL SUB MENU TRUE O */}
             {link.submenu && (
               <div>
                 {/* hidden */}
                 <div className="absolute  top-12 max-[960px]:left-48 hidden m-2 group-hover:md:inline-block hover:md:inline-block">
+
                   <div className="py-3">
                     <div
                       className="w-4 h-4 left-4 absolute 
@@ -39,21 +56,24 @@ const NavLinks = () => {
                     ></div>
                   </div>
                   {/* DESPLEGABLE */}
-                  <div className="bg-[rgb(255,255,255,0.8)] p-3 grid grid-cols-5 gap-10">
+                  <div className="bg-[rgb(255,255,255,0.8)] p-3 grid grid-cols-5 gap-10" key={link.id}>
                     {link.sublinks.map((mysublinks) => (
-                      <div className="inline-block">
+
+                      <div key={mysublinks.id} className="inline-block">
                         {/* SUBMENU */}
-                        <h1 className="text-md font-semibold inline-block ">
+                        <h1 className="text-md font-semibold inline-block " >
                           {mysublinks.Head}
                         </h1>
                         {mysublinks.sublink.map((slink) => (
-                          <li className="text-sm text-gray-900 my-2">
-                            <Link
-                              to={slink.link}
+                          <li className="text-sm text-gray-900 my-2" key={slink.id} >
+                            <div
+                              // to={slink.link} 
+                              key={slink.id}
+                              onClick={() => fetchProduct(`${slink.link}`, `${slink.name}`)}
                               className="hover:text-primary"
                             >
                               {slink.name}
-                            </Link>
+                            </div>
                           </li>
                         ))}
                       </div>
@@ -61,52 +81,57 @@ const NavLinks = () => {
                   </div>
                 </div>
               </div>
+
             )}
+            { /* LINK SUB 2 MENU */}
           </div>
           {/* Mobile menus */}
+
           <div
             className={`
             ${heading === link.name ? "md:hidden" : "hidden"}
           `}
+
           >
             {/* sublinks */}
             {link.sublinks.map((slinks) => (
-              <div>
+              <div key={slinks.id}>
                 <div>
                   <h1
+
                     onClick={() =>
                       subHeading !== slinks.Head
                         ? setSubHeading(slinks.Head)
                         : setSubHeading("")
                     }
-                    className="py-4 pl-7 font-semibold md:pr-0 pr-5 flex justify-center items-center"
+                    className="py-4 pl-10 font-semibold md:pr-0 pr-5 flex justify-start items-center group"
                   >
+                    <span className="text-xl md:mt-1 md:ml-2 inline  ">
+
+                      <LabelIcon fontSize="small"
+
+                      ></LabelIcon>
+                    </span>
                     {slinks.Head}
 
-                    <span className="text-xl md:mt-1 md:ml-2 inline">
-                      <ion-icon
-                        name={`${subHeading === slinks.Head
-                          ? "chevron-up"
-                          : "chevron-down"
-                          }`}
-                      ></ion-icon>
-                    </span>
                   </h1>
                   <div
+
                     className={`${subHeading === slinks.Head ? "md:hidden" : "hidden"
                       }`}
                   >
                     {slinks.sublink.map((slink) => (
-                      <li className="py-3 pl-14">
-                        <Link to={slink.link}>{slink.name}</Link>
+                      <li className="py-3 pl-14 flex justify-center" key={slink.id}>
+                        {/* CLICK DE REDIRECCIONES */}
+                        <div to={slink.link}>{slink.name}</div>
                       </li>
                     ))}
                   </div>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
+          </div >
+        </div >
       ))}
     </>
   );
