@@ -123,7 +123,7 @@ const NavLinks = () => {
                     {slinks.sublink.map((slink) => (
                       <li className="py-3 pl-14 flex justify-center" key={slink.id}>
                         {/* CLICK DE REDIRECCIONES */}
-                        <div to={slink.link}>{slink.name}</div>
+                        <div onClick={() => fetchProduct(`${slink.link}`, `${slink.name}`, `${link.name}`)}>{slink.name}</div>
                       </li>
                     ))}
                   </div>

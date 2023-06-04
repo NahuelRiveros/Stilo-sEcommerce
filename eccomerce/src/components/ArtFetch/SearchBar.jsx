@@ -1,5 +1,5 @@
 import React from 'react';
-
+import SearchIcon from '@mui/icons-material/Search';
 const SearchBar = ({ searchQuery, setSearchQuery, color, setColor, setSize, size }) => {
 
     // ESTA FUNCION RECIBE LO QUE SE ESCRIBE EN EL INPUT
@@ -17,20 +17,14 @@ const SearchBar = ({ searchQuery, setSearchQuery, color, setColor, setSize, size
     };
 
     return (
-        <div className="mb-4">
-            <input
-                type="text"
-                placeholder="Buscar..."
-                value={searchQuery}
-                onChange={handleSearchChange}
-                className="px-4 py-2 border border-gray-300 rounded"
-            />
+        <div className="mb-4 flex gap-3 content-center max-[540px]:flex-col justify-center p-2 m-2 flexrounded-lg border border-gray-400 shadow-lg focus:outline-none focus:border-orange-500 ">
+
             <select
                 value={size}
                 onChange={handleTalleChange}
-                className="ml-2 px-4 py-2 border border-gray-300 rounded"
+                className="p-2 border-b-2 w-96 border-gray-300 focus:outline-none focus:border-blue-500"
             >
-                <option value="">Todas las Talles</option>
+                <option value="">Todos los Talles</option>
                 <option value="S">Small</option>
                 <option value="M">Medium</option>
                 <option value="L">Large</option>
@@ -41,12 +35,27 @@ const SearchBar = ({ searchQuery, setSearchQuery, color, setColor, setSize, size
 
                 {/* Agrega más opciones de categorías según tus necesidades */}
             </select>
+            <div className="flex w-96 items-center border border-gray-300 rounded-md">
+                <span className="p-2 text-gray-500">
+                    <SearchIcon />
+                </span>
+                <input
+                    type="text"
+                    placeholder="Buscar"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                    className="w-full py-2 px-4 focus:outline-none"
+                />
+            </div>
+
+
             <select
                 value={color}
                 onChange={handleColorChange}
-                className="ml-2 px-4 py-2 border border-gray-300 rounded"
+                className="p-2 border-b-2 w-96 border-gray-300 focus:outline-none focus:border-blue-500"
             >
-                <option value="">Todas los colores</option>
+
+                <option value=""> Todos los colores </option>
                 <option value="azul">azul</option>
                 <option value="rojo">rojo</option>
                 <option value="verde">verde</option>
@@ -56,6 +65,7 @@ const SearchBar = ({ searchQuery, setSearchQuery, color, setColor, setSize, size
 
                 {/* Agrega más opciones de categorías según tus necesidades */}
             </select>
+
         </div>
     );
 }
