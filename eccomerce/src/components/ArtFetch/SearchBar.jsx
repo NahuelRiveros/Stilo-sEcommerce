@@ -22,7 +22,7 @@ const SearchBar = ({ searchQuery, setSearchQuery, color, setColor, setSize, size
             <select
                 value={size}
                 onChange={handleTalleChange}
-                className="p-2 border-b-2 w-96 border-gray-300 focus:outline-none focus:border-blue-500"
+                className="p-2 border-b-2 w-96 border-gray-300 focus:outline-none focus:border-blue-500 max-[620px]:w-full"
             >
                 <option value="">Todos los Talles</option>
                 <option value="S">Small</option>
@@ -35,7 +35,7 @@ const SearchBar = ({ searchQuery, setSearchQuery, color, setColor, setSize, size
 
                 {/* Agrega más opciones de categorías según tus necesidades */}
             </select>
-            <div className="flex w-96 items-center border border-gray-300 rounded-md">
+            <div className="flex w-96 items-center border border-gray-300 rounded-md max-[620px]:w-full">
                 <span className="p-2 text-gray-500">
                     <SearchIcon />
                 </span>
@@ -52,16 +52,17 @@ const SearchBar = ({ searchQuery, setSearchQuery, color, setColor, setSize, size
             <select
                 value={color}
                 onChange={handleColorChange}
-                className="p-2 border-b-2 w-96 border-gray-300 focus:outline-none focus:border-blue-500"
+                className="p-2 border-b-2 w-96 border-gray-300 focus:outline-none focus:border-blue-500 max-[620px]:w-full"
             >
 
                 <option value=""> Todos los colores </option>
-                <option value="azul">azul</option>
-                <option value="rojo">rojo</option>
-                <option value="verde">verde</option>
-                <option value="negro">negro</option>
-                <option value="bordo">bordo</option>
-                <option value="blanco">blanco</option>
+                <option value="Azul">azul</option>
+                <option value="Rojo">rojo</option>
+                <option value="Verde">verde</option>
+                <option value="Negro">negro</option>
+                <option value="Bordo">bordo</option>
+                <option value="Blanco">blanco</option>
+                <option value="Celeste">Celeste</option>
 
                 {/* Agrega más opciones de categorías según tus necesidades */}
             </select>

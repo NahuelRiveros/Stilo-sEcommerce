@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import Carrousel from '../components/Carrousel'
 import Product from '../components/product'
 import ProductHome from './ProductHome'
+import { Test } from './Test'
 import { useLoaderData } from 'react-router-dom'
 function Home() {
   const [productos, setProductos] = useState([])
@@ -18,8 +19,8 @@ function Home() {
     <div>
 
       <Carrousel />
+      <Test />
       <ProductHome productos={productos} />
-
     </div>
   )
 }

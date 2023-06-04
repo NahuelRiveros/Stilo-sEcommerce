@@ -30,7 +30,7 @@ const productBD = () => {
       brand: 'Bando',
       size: 'S',
       price: 1000,
-      color: 'celeste'
+      color: 'Celeste'
     },
     {
       id: 2,
@@ -110,7 +110,7 @@ const productBD = () => {
       brand: 'Bravo',
       size: 'L',
       price: 1000,
-      color: 'celeste'
+      color: 'Bordo'
     },
     {
       id: 10,
@@ -120,7 +120,7 @@ const productBD = () => {
       brand: 'BBN',
       size: 'M',
       price: 1000,
-      color: 'celeste'
+      color: 'Bordo'
     },
     ,
     {
@@ -131,7 +131,7 @@ const productBD = () => {
       brand: 'Gell',
       size: 'M',
       price: 1000,
-      color: 'celeste'
+      color: 'Negro'
     },
     ,
     {
@@ -142,7 +142,7 @@ const productBD = () => {
       brand: 'Taverniti',
       size: 'M',
       price: 1000,
-      color: 'celeste'
+      color: 'Negro'
     },
     ,
     {
@@ -153,7 +153,7 @@ const productBD = () => {
       brand: 'Beckon',
       size: 'M',
       price: 1000,
-      color: 'celeste'
+      color: 'Blanco'
     },
     ,
     {
@@ -164,7 +164,7 @@ const productBD = () => {
       brand: 'Maycla',
       size: 'M',
       price: 1000,
-      color: 'celeste'
+      color: 'Blanco'
     },
     ,
     {
@@ -175,7 +175,7 @@ const productBD = () => {
       brand: 'Maycla',
       size: 'M',
       price: 1000,
-      color: 'celeste'
+      color: 'Amarillo'
     },
     ,
     {
@@ -186,7 +186,7 @@ const productBD = () => {
       brand: 'Diosa',
       size: 'M',
       price: 1000,
-      color: 'celeste'
+      color: 'Amarillo'
     },
     ,
     {
@@ -197,7 +197,7 @@ const productBD = () => {
       brand: 'USA',
       size: 'M',
       price: 1000,
-      color: 'celeste'
+      color: 'Rojo'
     },
     ,
     {
@@ -208,7 +208,7 @@ const productBD = () => {
       brand: 'Panther',
       size: 'M',
       price: 1000,
-      color: 'celeste'
+      color: 'Rojo'
     },
     ,
     {
@@ -219,7 +219,7 @@ const productBD = () => {
       brand: 'Gell',
       size: 'M',
       price: 1000,
-      color: 'celeste'
+      color: 'Azul'
     },
     ,
     {
@@ -230,7 +230,7 @@ const productBD = () => {
       brand: 'Diosa',
       size: 'M',
       price: 1000,
-      color: 'celeste'
+      color: 'Azul'
     },
   ]
   return productos

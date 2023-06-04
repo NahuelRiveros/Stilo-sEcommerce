@@ -67,46 +67,68 @@ const InfoPorducto = () => {
                                 hover:text-white 
                                 cursor-pointer 
                                 hover:bg-gray-700
-                                duration-300 active:bg-black' onClick={()=>setBaseCant(baseCant === 1 ? (baseCant=1):baseCant-1)}>-</button>
+                                duration-300 active:bg-black' onClick={() => setBaseCant(baseCant === 1 ? (baseCant = 1) : baseCant - 1)}>-</button>
                                 <span>{baseCant}</span>
                                 <button className='border text-lg h-5 font-normal px-2 flex 
                                 items-center justify-center
                                 hover:text-white 
                                 cursor-pointer 
                                 hover:bg-gray-700
-                                duration-300 active:bg-black' onClick={()=>setBaseCant(baseCant + 1)}>+</button>
+                                duration-300 active:bg-black' onClick={() => setBaseCant(baseCant + 1)}>+</button>
                             </div>
                         </div>
-                                <button className='bg-gray-700 text-white gap-1 flex py-3 px-6  active:bg-orange-700'onClick={()=>dispatch(addToCart({
-                                    id: detalles.id,
-                                    title: detalles.name,
-                                    image: detalles.image,
-                                    marca: detalles.brand,
-                                    price: detalles.price,
-                                    cantidad: baseCant
-                                })) & toast.success(`se agrego ${baseCant} ${detalles.name} al carro`) }>add</button>
+                        <button className='bg-gray-700 text-white gap-1 flex py-3 px-6  active:bg-orange-700' onClick={() => dispatch(addToCart({
+                            id: detalles.id,
+                            title: detalles.name,
+                            image: detalles.image,
+                            marca: detalles.brand,
+                            price: detalles.price,
+                            cantidad: baseCant
+                        })) & toast.success(`se agrego ${baseCant} ${detalles.name} al carro`)}>add</button>
                     </div>
                     {/* aqui podria ir si este articulo es de mujero o hombre */}
-                    <p className='text-base text-gray-500'>
-                        Caregoria: 
-                        <span className='font-medium capitalize'>
-                         {detalles.brand}
-                        </span>
+                    <div className='flex gap-2'>
+
+                        <p className='text-base text-gray-500'>
+                            Categoría:
+                            <span className='font-medium capitalize pl-1'>
+                                {detalles.category}
+                            </span>
                         </p>
+                        <p className='text-base text-gray-500'>
+                            Marca:
+                            <span className='font-medium capitalize pl-1'>
+                                {detalles.brand}
+                            </span>
+                        </p>
+                        <p className='text-base text-gray-500'>
+                            Color:
+                            <span className='font-medium capitalize pl-1'>
+                                {detalles.color}
+                            </span>
+                        </p>
+                        <p className='text-base text-gray-500'>
+                            Talle:
+                            <span className='font-medium capitalize pl-1'>
+                                {detalles.size}
+                            </span>
+                        </p>
+                    </div>
+
                 </div>
             </div>
             <ToastContainer
-            position='top-left'
-            autoClose={2000}
-            hideProgressBar={false}
-            newesOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme='dark'
-        />
+                position='top-left'
+                autoClose={2000}
+                hideProgressBar={false}
+                newesOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme='dark'
+            />
         </div>
     )
 }
