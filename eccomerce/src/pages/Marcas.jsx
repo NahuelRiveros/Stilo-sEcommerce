@@ -18,19 +18,11 @@ const services = [
 ];
 export const Marcas = () => {
     return (
-
-
-
-
-
-
-        <div className="flex min-h-screen items-center justify-center bg-black font-bold text-white">
-            <div className="text-center space-y-12">
-                <div className="text-center text-5xl font-bold">
-                    Marcas
+        <div className="flex items-center justify-center bg-black font-bold text-white">
+            <div className="text-center">
+                <div className="text-center text-5xl flex justify-center font-titleFont">
                     <div className="relative  inline-grid grid-cols-1 grid-rows-1 gap-12 overflow-hidden">
                         {services.map((service, index) => (
-
                             <span
                                 key={index}
                                 className={`animate-word 
@@ -43,9 +35,20 @@ export const Marcas = () => {
                         ))}
                     </div>
                 </div>
-                <p className="text-white font-titleFont ">
-                    Siguenos en  <a className="underline" href="https://stilos@gmail.com">Intagram</a>
-                </p>
+                <div>
+
+                </div>
+                <div className='flex gap-5'>
+
+                    <p className="text-white font-titleFont ">
+                        Síguenos en  <a className="underline" href="https://stilos@gmail.com">Intagram</a>
+                    </p>
+                    <p className="text-white font-titleFont ">
+                        Síguenos en  <a className="underline" href="https://stilos@gmail.com">Facebook</a>
+                    </p>
+                </div>
+
+
             </div>
         </div>
 

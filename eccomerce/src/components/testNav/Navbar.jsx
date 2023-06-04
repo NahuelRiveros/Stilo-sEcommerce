@@ -16,7 +16,9 @@ const Navbar = () => {
     <nav className="bg-white border-b-gray-800 sticky top-0 z-50 shadow">
       <div className="flex items-center font-medium justify-between px-5 md:h-20 h-12">
         <div className="z-50 top-0 md:w-auto  w-full flex justify-between items-center">
-          <img src={logo2} alt="logo" className="md:cursor-pointer md:w-16 w-10 rounded-full" />
+          <Link to={'/'}>
+            <img src={logo2} alt="logo" className="md:cursor-pointer md:w-16 w-10 rounded-full" />
+          </Link>
           {/* ITEMS NAVBAR BURGER */}
           <div className="text-3xl flex items-center  gap-3 min-[768px]:hidden" onClick={() => setOpen(!open)}>
             <Link className='' to={'/card'}>
@@ -38,8 +40,12 @@ const Navbar = () => {
               </p>
             }
 
+            {open ?
+              <CloseIcon fontSize="large" />
+              :
+              <MenuRoundedIcon name={`${open ? "close" : "menu"}`} fontSize="large" />
 
-            <MenuRoundedIcon name={`${open ? "close" : "menu"}`} fontSize="medium"></MenuRoundedIcon>
+            }
           </div>
           {/* ITEMS NAVBAR BURGER */}
 

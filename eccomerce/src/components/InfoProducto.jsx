@@ -20,29 +20,34 @@ const InfoPorducto = () => {
     }, [])
     return (
         <div>
-            <div className='max-w-screen-lg mx-auto my-10 flex gap-10'>
-                <div className='w-2/5 relative'>
+            <div className='max-w-screen-lg mx-auto my-10 flex max-[740px]:flex-col gap-10 justify-center items-center'>
+                <p className='font-bodyFont text-4xl font-bold min-[740px]:hidden'>
+                    {detalles.detalle}
+                </p>
+                <div className='w-3/5 md:w-2/5 relative'>
                     <img className='w-full h-[400px] object-cover' src={detalles.image} alt={detalles.name} />
                     {/* Aqui pordemos poner lo que necesitemos encaso de que sea oferta o algo parecido */}
                     <div className='top-5 right-0 absolute'>
                         <p className='bg-black text-white font-semibold font-bodyFont py-1 px-8'>
-                            Info
+                            {detalles.brand}
                         </p>
 
                     </div>
                 </div>
+                {/* aqui podria ir si este articulo es de mujero o hombre */}
+
                 <div className='w-3/5 flex flex-col justify-center gap-12'>
                     <div>
-                        <p className='font-bodyFont text-4xl font-bold'>
-                            {detalles.name}
+                        <p className='font-bodyFont text-4xl font-bold  max-[740px]:hidden'>
+                            {detalles.detalle}
                         </p>
                         <div className='flex items-center gap-5 mt-3'>
-                            <p className='text-2xl font-mono'>Precio: {detalles.price}</p>
+                            <p className='text-2xl font-mono'>Precio: ${detalles.price}</p>
                             {/* En caso de tener ofertas */}
                             {/* <p className='text-2xl font-mono line-through'>{detalles.price}</p> */}
                         </div>
                     </div>
-                    <div className='flex gap-2 items-center text-base'>
+                    <div className='flex gap-2 items-center max-[720px]:justify-center text-base'>
                         <div className='flex'>
 
                             <StarRateIcon />
@@ -56,8 +61,37 @@ const InfoPorducto = () => {
                         </p>
                     </div>
                     {/* <p className='text-base -mt-3 text-gray-500'>`{detalles.name} marca {detalles.brand} talle`</p> */}
-                    <p className='text-base -mt-3 text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, laboriosam quidem. Repellendus reiciendis adipisci eos quis iusto exercitationem qui mollitia. Deleniti ratione asperiores at praesentium molestias beatae veniam placeat reiciendis.</p>
-                    <div className='flex gap-2'>
+                    {/* detalles del producto */}
+                    <div className='flex max-[740px]:flex-col gap-5 items-center'>
+
+                        <p className='text-base text-gray-500'>
+                            Categoría:
+                            <span className='font-medium capitalize pl-1'>
+                                {detalles.category}
+                            </span>
+                        </p>
+                        <p className='text-base text-gray-500'>
+                            Marca:
+                            <span className='font-medium capitalize pl-1'>
+                                {detalles.brand}
+                            </span>
+                        </p>
+                        <p className='text-base text-gray-500'>
+                            Color:
+                            <span className='font-medium capitalize pl-1'>
+                                {detalles.color}
+                            </span>
+                        </p>
+                        <p className='text-base text-gray-500'>
+                            Talle:
+                            <span className='font-medium capitalize pl-1'>
+                                {detalles.size}
+                            </span>
+                        </p>
+                    </div>
+                    {/* detalles del producto */}
+                    <p className='text-base font-bodyFont -mt-3 text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, laboriosam quidem. Repellendus reiciendis adipisci eos quis iusto exercitationem qui mollitia. Deleniti ratione asperiores at praesentium molestias beatae veniam placeat reiciendis.</p>
+                    <div className='flex gap-2 justify-center'>
                         <div className='w-52 flex items-center justify-between gap-4 text-gray-500 border p-3 shadow-md'>
 
                             <p className='text-sm font-bodyFont'>Cantidad</p>
@@ -86,34 +120,7 @@ const InfoPorducto = () => {
                             cantidad: baseCant
                         })) & toast.success(`se agrego ${baseCant} ${detalles.name} al carro`)}>add</button>
                     </div>
-                    {/* aqui podria ir si este articulo es de mujero o hombre */}
-                    <div className='flex gap-2'>
 
-                        <p className='text-base text-gray-500'>
-                            Categoría:
-                            <span className='font-medium capitalize pl-1'>
-                                {detalles.category}
-                            </span>
-                        </p>
-                        <p className='text-base text-gray-500'>
-                            Marca:
-                            <span className='font-medium capitalize pl-1'>
-                                {detalles.brand}
-                            </span>
-                        </p>
-                        <p className='text-base text-gray-500'>
-                            Color:
-                            <span className='font-medium capitalize pl-1'>
-                                {detalles.color}
-                            </span>
-                        </p>
-                        <p className='text-base text-gray-500'>
-                            Talle:
-                            <span className='font-medium capitalize pl-1'>
-                                {detalles.size}
-                            </span>
-                        </p>
-                    </div>
 
                 </div>
             </div>

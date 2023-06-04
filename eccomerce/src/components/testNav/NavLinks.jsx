@@ -24,11 +24,11 @@ const NavLinks = () => {
     <>
       {links.map((link) => (
         <div key={link.id}>
-          <div className="px-3 text-left md:cursor-pointer group" >
+          <div className="px-3 text-left md:cursor-pointer group cursor-pointer" >
             {/* LINK 1 PRIMARIO */}
             <h2
 
-              className="py-5 flex justify-start items-center md:pr-0 pr-5 group"
+              className="py-5 flex justify-start items-center md:pr-0 pr-5 group w-full"
               onClick={() => {
                 heading !== link.name ? setHeading(link.name) : setHeading("");
                 setSubHeading("");
@@ -95,7 +95,7 @@ const NavLinks = () => {
           >
             {/* sublinks */}
             {link.sublinks.map((slinks) => (
-              <div key={slinks.id}>
+              <div className="" key={slinks.id}>
                 <div>
                   <h1
 
@@ -104,7 +104,7 @@ const NavLinks = () => {
                         ? setSubHeading(slinks.Head)
                         : setSubHeading("")
                     }
-                    className="py-4 pl-10 font-semibold md:pr-0 pr-5 flex justify-start items-center group"
+                    className="py-4 pl-10 font-semibold md:pr-0 pr-5 flex justify-start items-center group cursor-pointer"
                   >
                     <span className="text-xl md:mt-1 md:ml-2 inline  ">
 
@@ -121,7 +121,7 @@ const NavLinks = () => {
                       }`}
                   >
                     {slinks.sublink.map((slink) => (
-                      <li className="py-3 pl-14 flex justify-center" key={slink.id}>
+                      <li className="py-3 pl-14 flex justify-center cursor-pointer" key={slink.id}>
                         {/* CLICK DE REDIRECCIONES */}
                         <div onClick={() => fetchProduct(`${slink.link}`, `${slink.name}`, `${link.name}`)}>{slink.name}</div>
                       </li>

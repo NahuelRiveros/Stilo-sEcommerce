@@ -18,8 +18,8 @@ function Home() {
   return (
     <div>
 
-      <Carrousel />
       <Marcas />
+      <Carrousel />
       <ProductHome productos={productos} />
     </div>
   )

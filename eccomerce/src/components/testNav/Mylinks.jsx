@@ -71,7 +71,7 @@ export const links = [
         Head: "Remeras",
         sublink: [
           { name: "Taverniti", link: "/Remeras", id: 1 },
-          { name: "Abstacta", link: "/Remeras", id: 2 },
+          { name: "Abstracta", link: "/Remeras", id: 2 },
           { name: "Gell", link: "/Remeras", id: 3 },
 
         ],
