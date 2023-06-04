@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const ProductList = ({ searchQuery, category, size, color }) => {
+
+    const [products, setProducts] = useState([])
     // Datos de ejemplo de productos
-    const products = [
-        { id: 1, name: 'Camisa de algodón', category: 'camisas', size: 'M', color: 'azul' },
-        { id: 2, name: 'Pantalón vaquero', category: 'pantalones', size: 'L', color: 'negro' },
-        { id: 3, name: 'Vestido floral', category: 'vestidos', size: 'S', color: 'rojo' },
-        // Agrega más productos según tus necesidades
-    ];
+
+
+
+
+    console.log(products)
 
     // Filtra los productos según la categoría seleccionada y el término de búsqueda
     const filteredProducts = products.filter((product) => {

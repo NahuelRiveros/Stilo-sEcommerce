@@ -12,8 +12,6 @@ const Navbar = () => {
   const productData = useSelector((state) => state.bazar.productData);
   const userInfo = useSelector((state) => state.bazar.userInfo)
 
-
-
   return (
     <nav className="bg-white border-b-gray-800 sticky top-0 z-50 shadow">
       <div className="flex items-center font-medium justify-between px-5 md:h-20 h-12">
@@ -39,6 +37,7 @@ const Navbar = () => {
                 {userInfo.name}
               </p>
             }
+
 
             <MenuRoundedIcon name={`${open ? "close" : "menu"}`} fontSize="medium"></MenuRoundedIcon>
           </div>

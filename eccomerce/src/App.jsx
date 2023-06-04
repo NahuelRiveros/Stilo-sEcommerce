@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './index.css'
 // import Navbar from './components/Navbar'
 import Navbar from './components/testNav/Navbar'
@@ -7,7 +7,7 @@ import Footer from './components/footer'
 import Card from './pages/Card'
 import InfoPorducto from './components/infoProducto'
 import Login from './pages/Login'
-import FetArt from './components/ArtFetch/FetArt'
+import MachArt from './components/ArtFetch/MachArt'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -17,76 +17,232 @@ import {
   ScrollRestoration
 } from "react-router-dom";
 
-//ejemplo productos
-const product = () => {
-  const pepe = [{
-    id: 1,
-    name: 'Camisa de mezclilla',
-    image: 'https://via.placeholder.com/150',
-    brand: 'Levi\'s',
-    size: 'L',
-    price: 1000
-  },
-  {
-    id: 2,
-    name: 'Pantalón de vestir',
-    image: 'https://via.placeholder.com/150',
-    brand: 'Zara',
-    size: 'M',
-    price: 800
-  },
-  {
-    id: 3,
-    name: 'Tenis blancos',
-    image: 'https://via.placeholder.com/150',
-    brand: 'Adidas',
-    size: '8',
-    price: 1500
-  }
-    ,
-  {
-    id: 4,
-    name: 'Tenis blancos',
-    image: 'https://via.placeholder.com/150',
-    brand: 'Adidas',
-    size: '8',
-    price: 1500
-  }, {
+//LLAMADO PRODUCTO DESDE LA BD
+// Datos de ejemplo de productos
 
-    id: 5,
-    name: 'Camisa de mezclilla',
-    image: 'https://via.placeholder.com/150',
-    brand: 'Levi\'s',
-    size: 'L',
-    price: 1000
-  },
-  {
-    id: 6,
-    name: 'Pantalón de vestir',
-    image: 'https://via.placeholder.com/150',
-    brand: 'Zara',
-    size: 'M',
-    price: 800
-  },
-  {
-    id: 7,
-    name: 'Tenis blancos',
-    image: 'https://via.placeholder.com/150',
-    brand: 'Adidas',
-    size: '8',
-    price: 1500,
-  }
+const productBD = () => {
+  const productos = [
+    {
+      id: 1,
+      category: 'Camisas',
+      detalle: 'Camisa de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Bando',
+      size: 'S',
+      price: 1000,
+      color: 'celeste'
+    },
+    {
+      id: 2,
+      category: 'Camisas',
+      detalle: 'Camisa de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Bravo',
+      size: 'S',
+      price: 1000,
+      color: 'celeste'
+    },
+    {
+      id: 3,
+      category: 'Remeras',
+      detalle: 'Camisa de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Bravo',
+      size: 'M',
+      price: 1000,
+      color: 'celeste'
+    },
+    {
+      id: 4,
+      category: 'Remeras',
+      detalle: 'Camisa de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'BBN',
+      size: 'M',
+      price: 1000,
+      color: 'celeste'
+    },
+    {
+      id: 5,
+      category: 'Jeans',
+      detalle: 'Camisa de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Bando',
+      size: 'S',
+      price: 1000,
+      color: 'celeste'
+    },
+    {
+      id: 6,
+      category: 'Jeans',
+      detalle: 'Camisa de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'BBN',
+      size: 'XL',
+      price: 1000,
+      color: 'celeste'
+    },
+    {
+      id: 7,
+      category: 'Chombas',
+      detalle: 'Camisa de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Raiders',
+      size: 'XL',
+      price: 1000,
+      color: 'celeste'
+    },
+    {
+      id: 8,
+      category: 'Chombas',
+      detalle: 'Camisa de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Taverniti',
+      size: 'L',
+      price: 1000,
+      color: 'celeste'
+    },
+    {
+      id: 9,
+      category: 'Bermuda',
+      detalle: 'Camisa de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Bravo',
+      size: 'L',
+      price: 1000,
+      color: 'celeste'
+    },
+    {
+      id: 10,
+      category: 'Bermuda',
+      detalle: 'Camisa de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'BBN',
+      size: 'M',
+      price: 1000,
+      color: 'celeste'
+    },
     ,
-  {
-    id: 8,
-    name: 'Tenis blancos',
-    image: 'https://via.placeholder.com/150',
-    brand: 'Adidas',
-    size: '8',
-    price: 1500,
-  }]
-  return pepe
+    {
+      id: 11,
+      category: 'Remeras',
+      detalle: 'Remeras de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Gell',
+      size: 'M',
+      price: 1000,
+      color: 'celeste'
+    },
+    ,
+    {
+      id: 12,
+      category: 'Remeras',
+      detalle: 'Remeras de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Taverniti',
+      size: 'M',
+      price: 1000,
+      color: 'celeste'
+    },
+    ,
+    {
+      id: 13,
+      category: 'Jeans',
+      detalle: 'Jeans de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Beckon',
+      size: 'M',
+      price: 1000,
+      color: 'celeste'
+    },
+    ,
+    {
+      id: 14,
+      category: 'Jeans',
+      detalle: 'Jeans de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Maycla',
+      size: 'M',
+      price: 1000,
+      color: 'celeste'
+    },
+    ,
+    {
+      id: 15,
+      category: 'Polleras',
+      detalle: 'Polleras de chocolate',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Maycla',
+      size: 'M',
+      price: 1000,
+      color: 'celeste'
+    },
+    ,
+    {
+      id: 16,
+      category: 'Polleras',
+      detalle: 'Polleras de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Diosa',
+      size: 'M',
+      price: 1000,
+      color: 'celeste'
+    },
+    ,
+    {
+      id: 17,
+      category: 'Calzados',
+      detalle: 'Calzados de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'USA',
+      size: 'M',
+      price: 1000,
+      color: 'celeste'
+    },
+    ,
+    {
+      id: 18,
+      category: 'Calzados',
+      detalle: 'Calzados de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Panther',
+      size: 'M',
+      price: 1000,
+      color: 'celeste'
+    },
+    ,
+    {
+      id: 19,
+      category: 'Camisas',
+      detalle: 'Camisas de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Gell',
+      size: 'M',
+      price: 1000,
+      color: 'celeste'
+    },
+    ,
+    {
+      id: 20,
+      category: 'Camisas',
+      detalle: 'Camisas de mezclilla',
+      image: 'https://via.placeholder.com/150',
+      brand: 'Diosa',
+      size: 'M',
+      price: 1000,
+      color: 'celeste'
+    },
+  ]
+  return productos
+
 }
+
+
+
+
+
+
+// LLAMADO PRODUCTOS DESDE LA BD
 
 
 const Layout = () => {
@@ -109,7 +265,7 @@ const router = createBrowserRouter([{
     {
       path: '/',
       element: <Home />,
-      loader: product,
+      loader: productBD,
     },
     {
       path: 'infoProducto/:id',
@@ -125,7 +281,8 @@ const router = createBrowserRouter([{
     },
     {
       path: '/Producto/:id',
-      element: <FetArt />
+      element: <MachArt />,
+      loader: productBD,
     }
   ]
 }])

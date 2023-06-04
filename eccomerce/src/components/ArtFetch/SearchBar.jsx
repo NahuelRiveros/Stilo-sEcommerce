@@ -1,13 +1,17 @@
 import React from 'react';
 
-const SearchBar = ({ searchQuery, setSearchQuery, category, setCategory, color, setColor, setSize, size }) => {
+const SearchBar = ({ searchQuery, setSearchQuery, color, setColor, setSize, size }) => {
+
+    // ESTA FUNCION RECIBE LO QUE SE ESCRIBE EN EL INPUT
     const handleSearchChange = (event) => {
         setSearchQuery(event.target.value);
     };
 
-    const handleCategoryChange = (event) => {
-        setCategory(event.target.value);
+    // ESTA FUNCION RECIBE LA GATEGOTIA DEL ARTICULO A VER
+    const handleTalleChange = (event) => {
+        setSize(event.target.value);
     };
+    //ESTA FUNCION RECIBE EL COLOR DEL ARTICULO A VER
     const handleColorChange = (event) => {
         setColor(event.target.value);
     };
@@ -22,14 +26,18 @@ const SearchBar = ({ searchQuery, setSearchQuery, category, setCategory, color, 
                 className="px-4 py-2 border border-gray-300 rounded"
             />
             <select
-                value={category}
-                onChange={handleCategoryChange}
+                value={size}
+                onChange={handleTalleChange}
                 className="ml-2 px-4 py-2 border border-gray-300 rounded"
             >
-                <option value="">Todas las categorías</option>
-                <option value="camisas">Camisas</option>
-                <option value="pantalones">Pantalones</option>
-                <option value="vestidos">Vestidos</option>
+                <option value="">Todas las Talles</option>
+                <option value="S">Small</option>
+                <option value="M">Medium</option>
+                <option value="L">Large</option>
+                <option value="XL">X-Large</option>
+                <option value="XXL">2X-Large</option>
+                <option value="XXXL">3X-Large</option>
+                <option value="XXXXL">4X-Large</option>
 
                 {/* Agrega más opciones de categorías según tus necesidades */}
             </select>
@@ -38,6 +46,7 @@ const SearchBar = ({ searchQuery, setSearchQuery, category, setCategory, color, 
                 onChange={handleColorChange}
                 className="ml-2 px-4 py-2 border border-gray-300 rounded"
             >
+                <option value="">Todas los colores</option>
                 <option value="azul">azul</option>
                 <option value="rojo">rojo</option>
                 <option value="verde">verde</option>

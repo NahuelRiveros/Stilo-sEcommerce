@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
   console.log(product)
   //Formatenado el nombre de la Ruta para ver detalles del producto al tocar la imagen
   const navigate = useNavigate()
-  const producSelectHandle = product.name
+  const producSelectHandle = product.detalle
   const idString = (producSelectHandle) => {
     return String(producSelectHandle).toLowerCase().split(' ').join('');
   }
@@ -35,7 +35,7 @@ const ProductCard = ({ product }) => {
          py-5 '>
         <div className='flex justify-between items-center'>
           <div className='font-titleFont font-semibold'>
-            <h2>{product.name.substring(0, 25)}</h2>
+            <h2>{product.detalle.substring(0, 25)}</h2>
           </div>
           <div className='flex gap-2 relative overflow-hidden'>
             <div className='flex gap-2 transform lg:group-hover:translate-x-24 transition-transform duration-500'>
@@ -47,13 +47,13 @@ const ProductCard = ({ product }) => {
               {/* Falta agregar una descipcion al producto */}
               <span onClick={() => dispatch(addToCart({
                 id: product.id,
-                title: product.name,
+                title: product.detalle,
                 image: product.image,
                 marca: product.brand,
                 price: product.price,
                 cantidad: 1
 
-              })) & toast.success(`se agrego ${product.name} al carro`)
+              })) & toast.success(`se agrego ${product.detalle} al carro`)
               } className='lg:absolute z-20 w-[100px] lg:text-gray-400 lg:hover:text-orange-400 
               text-red-500 flex-item-center gap-1 -top-0.5 lg:transform lg:-translate-x-32 lg:group-hover:-translate-x-8 lg:transition-transform cursor-pointer lg:duration-500 '><AddShoppingCartIcon /></span>
             </div>

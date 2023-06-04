@@ -11,10 +11,10 @@ const NavLinks = () => {
   const FormateoURI = (uri) => {
     return
   }
-  const fetchProduct = (uri, marca) => {
-    const formateoURI = String(uri).toLowerCase().split('/').join('');
-    console.log(`-> ${formateoURI} -> ${marca}`)
-    navigate(`/Producto/${formateoURI}`, { state: { articulo: formateoURI, marca: marca } })
+  const fetchProduct = (uri, marca, genero) => {
+    const categoryURI = String(uri).split('/').join('');
+    console.log(`-> ${categoryURI} -> ${marca}`)
+    navigate(`/Producto/${categoryURI}`, { state: { category: categoryURI, brand: marca, genero: genero } })
 
   }
 
@@ -69,7 +69,7 @@ const NavLinks = () => {
                             <div
                               // to={slink.link} 
                               key={slink.id}
-                              onClick={() => fetchProduct(`${slink.link}`, `${slink.name}`)}
+                              onClick={() => fetchProduct(`${slink.link}`, `${slink.name}`, `${link.name}`)}
                               className="hover:text-primary"
                             >
                               {slink.name}
