@@ -6,71 +6,70 @@
     0% {
         transform: translateY(100%);
     }
-    15% {
+    2% {
         transform: translateY(-10%);
         animation-timing-function: ease-out;
     }
 
-    20% {
+    5% {
         transform: translateY(0);
     }
 
-    40%,
+    8%,
     100% {
         transform: translateY(-110%);
     }
 }
 
 .animate-word {
-    animation: word 7s infinite;
+    animation: word 24s infinite;
+    animation-delay: 0s;
 }
-
 .animate-word-delay-1 {
-    animation-delay: -1s;
+    animation: word 24s infinite;
+    animation-delay: -2s;
 }
-
 .animate-word-delay-2 {
-    animation-delay: -3.4s;
+    animation: word 24s infinite;
+    animation-delay: -4s;
 }
-
 .animate-word-delay-3 {
-    animation-delay: -5.6s;
+    animation: word 24s infinite;
+    animation-delay: -6s;
 }
-
 .animate-word-delay-4 {
-    animation-delay: -6.8s;
-}
-
-.animate-word-delay-5 {
+    animation: word 24s infinite;
     animation-delay: -8s;
 }
-
+.animate-word-delay-5 {
+    animation: word 24s infinite;
+    animation-delay: -10s;
+}
 .animate-word-delay-6 {
-    animation-delay: -10.2s;
+    animation: word 24s infinite;
+    animation-delay: -12s;
 }
-
 .animate-word-delay-7 {
-    animation-delay: -11.4s;
+    animation: word 24s infinite;
+    animation-delay: -14s;
 }
-
 .animate-word-delay-8 {
-    animation-delay: -13.6s;
-}
-
-.animate-word-delay-9 {
-    animation-delay: -15.8s;
-}
-
-.animate-word-delay-10 {
+    animation: word 24s infinite;
     animation-delay: -16s;
 }
-
+.animate-word-delay-9 {
+    animation: word 24s infinite;
+    animation-delay: -18s;
+}
+.animate-word-delay-10 {
+    animation: word 24s infinite;
+    animation-delay: -20s;
+}
 .animate-word-delay-11 {
-    animation-delay: -18.2s;
+    animation: word 24s infinite;
+    animation-delay: -22s;
 }
-
 .animate-word-delay-12 {
-    animation-delay: -19.4s;
+    animation: word 24s infinite;
+    animation-delay: -24s;
 }
-/* Guarda el archivo y vuelve a la ventana del navegador donde se está ejecutando la aplicación de React. Verás que ahora el texto se anima correctamente para todos los elementos span, incluidos aquellos con retraso a partir de .animate-word-delay-4.
-  Con estos ajustes, hemos asignado los valores de retraso adecuados para que cada elemento span tenga el intervalo correcto en la animación. Ahora deberías ver que el texto se desplaza correctamente para todos los servicios en la lista. */

@@ -1,6 +1,7 @@
 import React from 'react'
 
 const services = [
+
     'Bando',
     'Taverniti',
     'Raiders',
@@ -13,8 +14,9 @@ const services = [
     'Diosa',
     'Gell',
     'Abstracta',
+
 ];
-export const Test = () => {
+export const Marcas = () => {
     return (
 
 
@@ -25,20 +27,24 @@ export const Test = () => {
         <div className="flex min-h-screen items-center justify-center bg-black font-bold text-white">
             <div className="text-center space-y-12">
                 <div className="text-center text-5xl font-bold">
-                    Services offered
-                    <div className="relative inline-grid grid-cols-1 grid-rows-1 gap-12 overflow-hidden">
+                    Marcas
+                    <div className="relative  inline-grid grid-cols-1 grid-rows-1 gap-12 overflow-hidden">
                         {services.map((service, index) => (
+
                             <span
                                 key={index}
-                                className={`animate-word col-span-full row-span-full animate-word-delay-${index}`}
+                                className={`animate-word 
+                                font-otherFont font-bold
+                                col-span-full row-span-full animate-word-delay-${index}`}
                             >
                                 {service}
+                                {console.log(`-> ${index} , ->${service}`)}
                             </span>
                         ))}
                     </div>
                 </div>
-                <p className="text-white">
-                    Want to hire me for work? Ping me <a className="underline" href="mailto:ponnamkarthik3@gmail.com">here</a>.
+                <p className="text-white font-titleFont ">
+                    Siguenos en  <a className="underline" href="https://stilos@gmail.com">Intagram</a>
                 </p>
             </div>
         </div>
