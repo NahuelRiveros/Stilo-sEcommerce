@@ -32,12 +32,12 @@ const Carrousel = () => {
                         className='w-screen h-full object-cover' alt='1'
                         loading='priority'></img>
                 </div>
-                <div className='absolute w-fit left-0 right-0 mx-auto flex gap-20 bottom-48'>
-                    <div onClick={prevSlide} className='w-14 h-12 border-[1px] flex items-center justify-center hover:cursor-pointer border-gray-700 hover:text-white active:bg-gray-900 duration-300'>
-                        <KeyboardArrowLeftOutlinedIcon />
+                <div className='absolute  w-fit left-0 right-0 mx-auto flex gap-20  bottom-48'>
+                    <div onClick={prevSlide} className='w-14 h-12 border-[1px] rounded-full flex items-center justify-center hover:cursor-pointer border-gray-700 hover:text-white active:bg-gray-900 duration-300'>
+                        <KeyboardArrowLeftOutlinedIcon fontSize='large' />
                     </div>
-                    <div onClick={nextSlide} className='w-14 h-12 border-[1px] flex items-center justify-center hover:cursor-pointer border-gray-700 hover:text-white active:bg-gray-900 duration-300'>
-                        <KeyboardArrowRightOutlinedIcon />
+                    <div onClick={nextSlide} className='w-14 h-12 border-[1px] rounded-full flex items-center justify-center hover:cursor-pointer border-gray-700 hover:text-white active:bg-gray-900 duration-300'>
+                        <KeyboardArrowRightOutlinedIcon fontSize='large' />
                     </div>
                 </div>
             </div>

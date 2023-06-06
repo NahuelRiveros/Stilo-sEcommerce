@@ -1,10 +1,10 @@
 import React from 'react'
 import { Google } from '../assets/logo';
-import { ToastContainer,toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
-import { useSelector , useDispatch} from 'react-redux';
-import { useNavigate} from 'react-router-dom'
-import { addUser , removeUser} from '../redux/bazarSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom'
+import { addUser, removeUser } from '../redux/bazarSlice';
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -21,6 +21,7 @@ const Login = () => {
         // const credential = GoogleAuthProvider.credentialFromResult(result);
         // const token = credential.accessToken;
         // The signed-in user info.
+        console.log(result.user)
         const user = result.user;
         dispatch(addUser({
           id: user.uid,
@@ -28,9 +29,9 @@ const Login = () => {
           email: user.email,
           image: user.photoURL,
         }));
-        setTimeout(()=>{
+        setTimeout(() => {
           navigate('/')
-        },1500)
+        }, 1500)
         console.log(user)
         // IdP data available using getAdditionalUserInfo(result)
         // ...
@@ -48,11 +49,11 @@ const Login = () => {
   };
 
   // ========== GOOGLE SING OUT o LOG OUT ===========
-  const handleSingOut=()=>{
-    signOut(auth).then(()=>{
+  const handleSingOut = () => {
+    signOut(auth).then(() => {
       toast.success('Cerro sesión con éxito!')
       dispatch(removeUser())
-    }).catch((error)=>{
+    }).catch((error) => {
       console.log(error)
     })
   };
@@ -66,17 +67,17 @@ const Login = () => {
         <button onClick={handleSingOut} className='bg-black text-white text-base py-3 px-8 tracking-wide rounded-md hover:bg-orange-700 duration-300'> Cerrar Sesión</button>
       </div>
       <ToastContainer
-            position='top-left'
-            autoClose={2000}
-            hideProgressBar={false}
-            newesOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme='dark'
-        />
+        position='top-left'
+        autoClose={2000}
+        hideProgressBar={false}
+        newesOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='dark'
+      />
     </div>
   )
 }
