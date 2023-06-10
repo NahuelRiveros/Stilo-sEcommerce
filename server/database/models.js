@@ -1,4 +1,4 @@
-import db from 'db.js';
+import db from './db.js';
 import { DataTypes } from 'sequelize';
 
 export const tbPermisosUsers = db.define('PermisoUsuario', {
@@ -401,5 +401,5 @@ tbTalleProd.hasMany(tbProducto, { foreignKey: { name: 'fk_id_Talle' } });
 tbProducto.belongsTo(tbDescuentoProd, { foreignKey: { name: 'fk_id_Descuento' } });
 tbDescuentoProd.hasMany(tbProducto, { foreignKey: { name: 'fk_id_Descuento' } });
 
-tbProducto.belongsTo(tbCategoriaProd, { foreignKey: { name: 'fk_id_Categoria' } });
+tbProducto.belongsTo(tbCategoriaProd, { foreignKey: { name: 'fk_id_Categoria' }, as: 'CategoriaAsociada' });
 tbCategoriaProd.hasMany(tbProducto, { foreignKey: { name: 'fk_id_Categoria' } });

@@ -1,4 +1,5 @@
 import Sequelize from 'sequelize';
+import { DataTypes } from 'sequelize';
 
 const db = new Sequelize ('Stilos', 'Pruebas', '123456789', {
   host: 'localhost',
