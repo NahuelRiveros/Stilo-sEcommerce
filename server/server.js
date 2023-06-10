@@ -20,22 +20,6 @@ import {
     tbTalleProd,
 } from "./database/models.js"
 
-import {
-    tbPersona,
-    tbUsuario,
-    tbCarrito,
-    tbCarritoDetalle,
-    tbCategoriaProd,
-    tbColorProd,
-    tbDescuentoProd,
-    tbDomicilio,
-    tbGeneroProd,
-    tbMarcaProd,
-    tbPermisosUsers,
-    tbProducto,
-    tbTalleProd,
-} from "./database/models.js";
-
 const env = dotevn.config();
 const app = express();
 app.use(cors());

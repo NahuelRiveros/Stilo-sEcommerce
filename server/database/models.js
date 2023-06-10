@@ -141,10 +141,6 @@ export const tbProducto = db.define(
             type: DataTypes.FLOAT,
             allowNull: false,
         },
-        Categoria_Producto: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
         Detalle_Producto: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -460,5 +456,5 @@ tbCategoriaProd.hasMany(tbProducto, {
     foreignKey: { name: "fk_id_Categoria" },
 });
 
-tbProducto.belongsTo(tbCategoriaProd, { foreignKey: { name: 'fk_id_Categoria' }, as: 'CategoriaAsociada' });
+tbProducto.belongsTo(tbCategoriaProd, { foreignKey: { name: 'fk_id_Categoria' }});
 tbCategoriaProd.hasMany(tbProducto, { foreignKey: { name: 'fk_id_Categoria' } });
