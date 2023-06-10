@@ -5,6 +5,22 @@ import stripe from "stripe";
 import db from "./database/db.js";
 import bodyParser from "body-parser";
 
+import {
+    tbPersona,
+    tbUsuario,
+    tbCarrito,
+    tbCarritoDetalle,
+    tbCategoriaProd,
+    tbColorProd,
+    tbDescuentoProd,
+    tbDomicilio,
+    tbGeneroProd,
+    tbMarcaProd,
+    tbPermisosUsers,
+    tbProducto,
+    tbTalleProd,
+} from "./database/models.js";
+
 const env = dotevn.config();
 const app = express();
 app.use(cors());
