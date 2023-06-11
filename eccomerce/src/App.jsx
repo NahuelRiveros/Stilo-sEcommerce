@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './index.css'
 // import Navbar from './components/Navbar'
-import Navbar from './components/testNav/Navbar'
+import Navbar from './components/NavegadorLinks/Navbar'
 import Home from './pages/Home'
 import Footer from './components/footer'
 import Card from './pages/Card'
@@ -16,7 +16,7 @@ import {
   Outlet,
   ScrollRestoration
 } from "react-router-dom";
-import db from '../../server/database/db.js'
+
 
 //LLAMADO PRODUCTO DESDE LA BD
 // Datos de ejemplo de productos

@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotevn from "dotenv";
 import stripe from "stripe";
-import db from "./database/db.js";
 import bodyParser from "body-parser";
+import db from "./database/db.js";
 import {
     tbPersona,
     tbUsuario,
@@ -18,7 +18,7 @@ import {
     tbPermisosUsers,
     tbProducto,
     tbTalleProd,
-} from "./database/models.js"
+} from "./database/models.js";
 
 const env = dotevn.config();
 const app = express();
@@ -42,12 +42,12 @@ app.post("/pagos", async (req, res) => {
 // })
 // console.log('hello')
 
-try {
-    await db.authenticate();
-    console.log("Connection has been established successfully.");
-} catch (err) {
-    console.error("Unable to connect to the database:", err);
-}
+// try {
+//     await db.authenticate();
+//     console.log("Connection has been established successfully.");
+// } catch (err) {
+//     console.error("Unable to connect to the database:", err);
+// }
 
 app.listen(port, (req, res) => {
     console.log(`sever esta corriendo en http://localhost:${port}/`);
