@@ -16,6 +16,7 @@ import {
   Outlet,
   ScrollRestoration
 } from "react-router-dom";
+import CargaProducto from './components/ProductoAdmin/CargaProducto'
 
 
 //LLAMADO PRODUCTO DESDE LA BD
@@ -284,6 +285,10 @@ const router = createBrowserRouter([{
       path: '/Producto/:id',
       element: <MachArt />,
       loader: productBD,
+    }
+    , {
+      path: '/InsertProducto',
+      element: <CargaProducto />,
     }
   ]
 }])
