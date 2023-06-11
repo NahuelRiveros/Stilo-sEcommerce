@@ -31,11 +31,17 @@ const CargaProducto = () => {
     return (
 
         <div>
-            <form onSubmit={formik.handleSubmit} className='max-w-sm mx-auto flex flex-col '>
+            <form onSubmit={formik.handleSubmit} className='max-w-none mx-auto flex flex-col '>
+
                 <div className="flex min-h-screen flex-col justify-center bg-[#0a1120] bg-[url('https://mini.codingcodax.dev/images/dark-beams.jpg')] bg-[length:86.125rem] bg-bottom bg-no-repeat p-4 ">
 
                     {/* Elemento que contiene todos los inputs */}
-                    <div className="mx-auto w-screen-sm flex-col p-1">
+                    <div className='items-center flex justify-center pb-10'>
+
+                        <label className="font-titleFont Titulo-H text-white text-center " > FORMULARIO DE INGRESO DE PRODUCTOS</label>
+                    </div>
+                    <div className="mx-auto 
+                    w-screen-sm grid gap-6 mb-6 md:grid-cols-2">
 
                         {/* Inpust detalle producto */}
                         <div className="relative flex h-10 w-full flex-row-reverse overflow-clip rounded-lg">
@@ -44,14 +50,16 @@ const CargaProducto = () => {
                                 id="detalle_Producto"
                                 placeholder="Detalle"
                                 onChange={formik.handleChange} />
-                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-400 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Detalle Producto</label>
+                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Detalle Producto</label>
                         </div>
                         {/* Inpust detalle producto */}
 
                         {/* seleccion Categoria */}
-                        <div className='relative flex h-10 justify-center w-full overflow-clip rounded-lg'>
-                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-400 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccion Categoria</label>
-                            <select className='flex items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-400 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="categoria" id="categoria" onChange={formik.handleChange}>
+                        <div className='relative flex h-10 select-container justify-center w-full overflow-clip rounded-lg'>
+                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccion Categoria</label>
+                            <select className='flex 
+                            select items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300
+                             peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="categoria" id="categoria" onChange={formik.handleChange}>
                                 <option value="">ninguno</option>
                                 <option value="Remeras">Remeras</option>
                                 <option value="Jeans">Jeans</option>
@@ -65,9 +73,9 @@ const CargaProducto = () => {
                         {/* seleccion Categoria */}
 
                         {/* seleccion descuento */}
-                        <div className='relative flex h-10 justify-center w-full overflow-clip rounded-lg'>
-                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-400 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccionar Descuentos</label>
-                            <select className='flex items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-400 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="descuento" id="descuento" onChange={formik.handleChange}>
+                        <div className='relative flex h-10 justify-center w-full overflow-clip rounded-lg select-container'>
+                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccionar Descuentos</label>
+                            <select className='flex select items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="descuento" id="descuento" onChange={formik.handleChange}>
                                 <option value="0">ninguno</option>
                                 <option value="5">5%</option>
                                 <option value="10">10%</option>
@@ -76,9 +84,9 @@ const CargaProducto = () => {
                         </div>
                         {/* seleccion descuento */}
                         {/* seleccion talle */}
-                        <div className='relative flex h-10 justify-center w-full overflow-clip rounded-lg'>
-                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-400 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccionar talle</label>
-                            <select className='flex items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-400 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="talle" id="talle" onChange={formik.handleChange}>
+                        <div className='relative flex h-10 justify-center w-full overflow-clip rounded-lg select-container'>
+                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccionar talle</label>
+                            <select className='flex select items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="talle" id="talle" onChange={formik.handleChange}>
                                 <option value="">ninguno</option>
                                 <option value="S">S</option>
                                 <option value="M">M</option>
@@ -91,9 +99,9 @@ const CargaProducto = () => {
                         </div>
                         {/* seleccion talle */}
                         {/* seleccion marca */}
-                        <div className='relative flex h-10 justify-center w-full overflow-clip rounded-lg'>
-                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-400 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccionar marca</label>
-                            <select className='flex items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-400 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="marca" id="marca" onChange={formik.handleChange}>
+                        <div className='relative flex h-10 justify-center w-full overflow-clip rounded-lg select-container'>
+                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccionar marca</label>
+                            <select className='flex select items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="marca" id="marca" onChange={formik.handleChange}>
                                 <option value="">ninguno</option>
                                 <option value="Raiders">Raiders</option>
                                 <option value="Bando">Bando</option>
@@ -112,10 +120,10 @@ const CargaProducto = () => {
                         {/* seleccion marca */}
                         {/* seleccion genero */}
                         <div className='relative flex h-10 justify-center w-full overflow-clip rounded-lg'>
-                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-400 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccionar genero</label>
-                            <div className=' items-center gap-2 text-white inline-flex  mr-2'>
+                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccionar genero</label>
+                            <div className=' items-center gap-2 text-white flex'>
 
-                                <label htmlFor="">Mujeres</label>
+                                <label htmlFor="" className='pl-2'>Mujeres</label>
                                 <input name='genero' value="femenino"
                                     type="radio"
                                     onChange={formik.handleChange} />
@@ -129,9 +137,9 @@ const CargaProducto = () => {
                         </div>
                         {/* seleccion genero */}
                         {/* seleccion color */}
-                        <div className='relative flex h-10 justify-center w-full overflow-clip rounded-lg'>
-                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-400 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccionar color</label>
-                            <select className='flex items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-400 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="color" id="color" onChange={formik.handleChange}>
+                        <div className='relative flex h-10 justify-center w-full overflow-clip rounded-lg select-container'>
+                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccionar color</label>
+                            <select className='flex select items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="color" id="color" onChange={formik.handleChange}>
                                 <option value="">ninguno</option>
                                 <option value="Negro">Negro</option>
                                 <option value="Blanco">Blanco</option>
@@ -148,7 +156,7 @@ const CargaProducto = () => {
                         {/* seleccion color */}
                         {/* seleccion precio */}
                         <div className='relative flex h-10 justify-center w-full overflow-clip rounded-lg'>
-                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-400 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" > precio$:</label>
+                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" > precio$:</label>
                             <input type='number' className='peer w-full rounded-r-lg border border-slate-400 px-2 text-slate-900 placeholder-slate-400 transition-colors duration-300 focus:border-sky-400 focus:outline-none' name="precio" id="precio" onChange={formik.handleChange} />
 
 
@@ -156,7 +164,7 @@ const CargaProducto = () => {
                         {/* seleccion precio */}
                         {/* seleccion cantidad */}
                         <div className='relative flex h-10 justify-center w-full overflow-clip rounded-lg'>
-                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-400 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" > cantidad</label>
+                            <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" > cantidad</label>
                             <input type='number' className='peer w-full rounded-r-lg border border-slate-400 px-2 text-slate-900 placeholder-slate-400 transition-colors duration-300 focus:border-sky-400 focus:outline-none' name="cantidad" id="cantidad" onChange={formik.handleChange} />
 
 
@@ -179,7 +187,8 @@ const CargaProducto = () => {
                         {/* Seleccionar Imagen */}
 
                     </div>
-                    <button className='shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded' type="submit">Guardar</button>
+                    <button className='shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline
+                    mx-auto focus:outline-none text-white font-bold py-2 px-4 rounded' type="submit">Guardar</button>
                 </div>
 
 
