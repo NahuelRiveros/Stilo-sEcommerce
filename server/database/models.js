@@ -2,7 +2,7 @@ import db from "./db.js";
 import { DataTypes } from "sequelize";
 
 const datosPermisos = [
-    { Nivel_Permiso: 'Admin' }, { Nivel_Permiso: 'Empleado' }, { Nivel_Permiso: 'Usuario' }
+    { id_PermisoUsuario: 1, Nivel_Permiso: 'Admin' }, { id_PermisoUsuario: 2, Nivel_Permiso: 'Empleado' }, { id_PermisoUsuario: 3, Nivel_Permiso: 'Usuario' }
 ]
 
 const datosCategoria = [
@@ -22,11 +22,11 @@ const datosColores = [
 ]
 
 const datosGeneros = [
-    {Genero_Producto: 'Hombres'}, {Genero_Producto: 'Mujeres'}, {Genero_Producto: 'Unisex'}
+    { Genero_Producto: 'Hombres' }, { Genero_Producto: 'Mujeres' }, { Genero_Producto: 'Unisex' }
 ]
 
 const datosTalles = [
-    {Nom_Talle: 'S'}, {Nom_Talle: 'M'}, {Nom_Talle: 'L'}, {Nom_Talle: 'XL'}, {Nom_Talle: 'XXL'}
+    { Nom_Talle: 'S' }, { Nom_Talle: 'M' }, { Nom_Talle: 'L' }, { Nom_Talle: 'XL' }, { Nom_Talle: 'XXL' }
 ]
 
 const datosDescuentos = [
@@ -270,7 +270,7 @@ export const tbPersona = db.define(
             allowNull: false,
         },
         Segundo_Nombre: {
-            type:DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: true
         },
         Apellido: {
@@ -497,17 +497,92 @@ tbCategoriaProd.hasMany(tbProducto, { foreignKey: { name: 'fk_id_Categoria' } })
 //tbGeneroProd.bulkCreate(datosGeneros)
 //tbTalleProd.bulkCreate(datosTalles)
 
-// const promises = datosPermisos.map((permiso) => {
-//     return tbPermisosUsers.findOrCreate({
-//       where: { Nivel_Permiso: permiso.Nivel_Permiso },
-//       defaults: permiso
-//     });
-//   });
-  
-//   Promise.all(promises)
-//     .then((results) => {
-//       console.log('Registros creados exitosamente.');
-//     })
-//     .catch((error) => {
-//       console.error('Error al buscar o crear los registros:', error);
-//     });
+const crearPermisosDefault = datosPermisos.map((permiso) => {
+    return tbPermisosUsers.findOrCreate({
+        where: { Nivel_Permiso: permiso.Nivel_Permiso },
+        defaults: permiso
+    });
+});
+
+Promise.all(crearPermisosDefault)
+    .then((results) => {
+        console.log('Registros creados exitosamente.');
+    })
+    .catch((error) => {
+        console.error('Error al buscar o crear los registros:', error);
+    });
+
+const crearCategoriasDefault = datosCategoria.map((categoria) => {
+    return tbCategoriaProd.findOrCreate({
+        where: { Nom_Categoria: categoria.Nom_Categoria },
+        defaults: categoria
+    });
+});
+
+Promise.all(crearCategoriasDefault)
+    .then((results) => {
+        console.log('Registros creados exitosamente.');
+    })
+    .catch((error) => {
+        console.error('Error al buscar o crear los registros:', error);
+    });
+
+const crearMarcasDefault = datosMarcas.map((marca) => {
+    return tbMarcaProd.findOrCreate({
+        where: { Nom_Marca: marca.Nom_Marca },
+        defaults: marca
+    });
+});
+
+Promise.all(crearMarcasDefault)
+    .then((results) => {
+        console.log('Registros creados exitosamente.');
+    })
+    .catch((error) => {
+        console.error('Error al buscar o crear los registros:', error);
+    });
+
+const crearColoresDefault = datosColores.map((color) => {
+    return tbColorProd.findOrCreate({
+        where: { Nom_Color: color.Nom_Color },
+        defaults: color
+    });
+});
+
+Promise.all(crearColoresDefault)
+    .then((results) => {
+        console.log('Registros creados exitosamente.');
+    })
+    .catch((error) => {
+        console.error('Error al buscar o crear los registros:', error);
+    });
+
+const crearGenerosDefault = datosGeneros.map((genero) => {
+    return tbGeneroProd.findOrCreate({
+        where: { Genero_Producto: genero.Genero_Producto },
+        defaults: genero
+    });
+});
+
+Promise.all(crearGenerosDefault)
+    .then((results) => {
+        console.log('Registros creados exitosamente.');
+    })
+    .catch((error) => {
+        console.error('Error al buscar o crear los registros:', error);
+    });
+
+const crearTallesDefault = datosTalles.map((talle) => {
+    return tbTalleProd.findOrCreate({
+        where: { Nom_Talle: talle.Nom_Talle },
+        defaults: talle
+    });
+});
+
+Promise.all(crearTallesDefault)
+    .then((results) => {
+        console.log('Registros creados exitosamente.');
+    })
+    .catch((error) => {
+        console.error('Error al buscar o crear los registros:', error);
+    });
