@@ -42,12 +42,12 @@ app.post("/pagos", async (req, res) => {
 // })
 // console.log('hello')
 
-// try {
-//     await db.authenticate();
-//     console.log("Connection has been established successfully.");
-// } catch (err) {
-//     console.error("Unable to connect to the database:", err);
-// }
+try {
+    await db.authenticate();
+    console.log("Connection has been established successfully.");
+} catch (err) {
+    console.error("Unable to connect to the database:", err);
+}
 
 app.listen(port, (req, res) => {
     console.log(`sever esta corriendo en http://localhost:${port}/`);
