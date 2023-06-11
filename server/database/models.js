@@ -166,8 +166,8 @@ export const tbProducto = db.define(
             allowNull: false,
         },
         Img_Producto: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
+            type: DataTypes.BLOB,
+            allowNull: true,
         },
         Precio_Producto: {
             type: DataTypes.FLOAT,
@@ -229,6 +229,82 @@ export const tbProducto = db.define(
     { freezeTableName: true }
 );
 
+export const tbUsuario = db.define(
+    "Usuario",
+    {
+        id_Usuario: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            autoIncrement: false,
+            primaryKey: true,
+            unique: true
+        },
+        Email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
+        fk_id_PermisoUsuario: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: "PermisoUsuario",
+                key: "id_PermisoUsuario",
+            },
+        },
+    },
+    { freezeTableName: true }
+);
+
+export const tbPersona = db.define(
+    "Persona",
+    {
+        id_Persona: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            autoIncrement: true,
+            primaryKey: true,
+        },
+        Nombre: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        Segundo_Nombre: {
+            type:DataTypes.STRING,
+            allowNull: true
+        },
+        Apellido: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        Localidad: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        Provincia: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        Genero: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        Telefono: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        fk_id_Usuario: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: "Usuario",
+                key: "id_Usuario",
+            },
+        }
+    },
+    { freezeTableName: true }
+);
+
 export const tbDomicilio = db.define(
     "Domicilio",
     {
@@ -261,84 +337,6 @@ export const tbDomicilio = db.define(
         Codigo_Postal: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-    },
-    { freezeTableName: true }
-);
-
-export const tbPersona = db.define(
-    "Persona",
-    {
-        id_Persona: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true,
-        },
-        Nombre: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        Apellido: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        Localidad: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        Provincia: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        Genero: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        Telefono: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        fk_id_Domicilio: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: "Domicilio",
-                key: "id_Domicilio",
-            },
-        },
-    },
-    { freezeTableName: true }
-);
-
-export const tbUsuario = db.define(
-    "Usuario",
-    {
-        id_Usuario: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true,
-        },
-        Email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        Estado_Cuenta: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-        },
-        Historial_Compra: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        fk_id_PermisoUsuario: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: "PermisoUsuario",
-                key: "id_PermisoUsuario",
-            },
         },
         fk_id_Persona: {
             type: DataTypes.INTEGER,
@@ -431,13 +429,13 @@ tbPermisosUsers.hasMany(tbUsuario, {
 
 //Persona a Usuario
 
-tbUsuario.belongsTo(tbPersona, { foreignKey: { name: "fk_id_Persona" } });
-tbPersona.hasOne(tbUsuario, { foreignKey: { name: "fk_id_Persona" } });
+tbPersona.belongsTo(tbUsuario, { foreignKey: { name: "fk_id_Usuario" } });
+tbUsuario.hasOne(tbPersona, { foreignKey: { name: "fk_id_Usuario" } });
 
 //Domicilio a Persona
 
-tbPersona.belongsTo(tbDomicilio, { foreignKey: { name: "fk_id_Domicilio" } });
-tbDomicilio.hasOne(tbPersona, { foreignKey: { name: "fk_id_Domicilio" } });
+tbDomicilio.belongsTo(tbPersona, { foreignKey: { name: "fk_id_Persona" } });
+tbPersona.hasOne(tbDomicilio, { foreignKey: { name: "fk_id_Persona" } });
 
 //Usuario a Carrito
 

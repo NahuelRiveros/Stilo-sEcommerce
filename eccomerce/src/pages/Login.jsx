@@ -5,6 +5,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { addUser, removeUser } from '../redux/bazarSlice';
+import axios from 'axios';
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -29,6 +30,28 @@ const Login = () => {
           email: user.email,
           image: user.photoURL,
         }));
+        const userData1 = {
+          id: user.uid,
+          name: user.displayName,
+          email: user.email,
+        };
+        const userData = JSON.stringify(userData1)
+        console.log(JSON.stringify(userData))
+
+        const registro = async () => {
+          const URI = "http://localhost:5173/registroUsuario/'";
+          await axios.post(URI, { userData }).then((res) => {
+            if (!res.data.msg) {
+              console.log("error en el inicio de sesion")
+            } else {
+              console.log(res.msg)
+              console.log('Se ha registrado correctamente')
+              navigate('/')
+            }
+          })
+        }
+
+
         setTimeout(() => {
           navigate('/')
         }, 1500)
