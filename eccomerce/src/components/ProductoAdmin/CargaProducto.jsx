@@ -179,12 +179,12 @@ const CargaProducto = () => {
                         {/* Seleccionar Imagen */}
 
                     </div>
+                    <button className='shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded' type="submit">Guardar</button>
                 </div>
 
 
                 {/* Agrega otros campos del formulario (por ejemplo, categoría, precio, imagen) */}
 
-                <button type="submit">Guardar</button>
             </form>
 
         </div>

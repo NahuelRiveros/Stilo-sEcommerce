@@ -17,6 +17,7 @@ import {
   ScrollRestoration
 } from "react-router-dom";
 import CargaProducto from './components/ProductoAdmin/CargaProducto'
+import CargaDatoPers from './components/PersonaDatos/CargaDatoPers'
 
 
 //LLAMADO PRODUCTO DESDE LA BD
@@ -289,6 +290,10 @@ const router = createBrowserRouter([{
     , {
       path: '/InsertProducto',
       element: <CargaProducto />,
+    }
+    , {
+      path: '/DatoPersonales',
+      element: < CargaDatoPers />,
     }
   ]
 }])
