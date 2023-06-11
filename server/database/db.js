@@ -10,7 +10,7 @@ const db = new Sequelize("Stilos", "Pruebas", "123456789", {
 
 async function createTables() {
     try {
-        await db.sync({ force: true });
+        await db.sync({ alter: true });
         console.log("Tablas creadas en la base de datos.");
     } catch (error) {
         console.error("Error al crear las tablas:", error);

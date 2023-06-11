@@ -1,6 +1,38 @@
 import db from "./db.js";
 import { DataTypes } from "sequelize";
 
+const datosPermisos = [
+    { Nivel_Permiso: 'Admin' }, { Nivel_Permiso: 'Empleado' }, { Nivel_Permiso: 'Usuario' }
+]
+
+const datosCategoria = [
+
+]
+
+const datosMarcas = [
+    { Nom_Marca: 'Bando' }, { Nom_Marca: 'Bravo' }, { Nom_Marca: 'BBN' }, { Nom_Marca: 'Raiders' },
+    { Nom_Marca: 'Taverniti' }, { Nom_Marca: 'Gell' }, { Nom_Marca: 'Beckon' }, { Nom_Marca: 'Maycla' },
+    { Nom_Marca: 'Diosa' }, { Nom_Marca: 'USA' }, { Nom_Marca: 'Panther' }
+]
+
+const datosColores = [
+    { Nom_Color: 'Rojo' }, { Nom_Color: 'Blanco' }, { Nom_Color: 'Negro' },
+    { Nom_Color: 'Azul' }, { Nom_Color: 'Rosa' }, { Nom_Color: 'Verde' },
+    { Nom_Color: 'Marron' }, { Nom_Color: 'Amarillo' }, { Nom_Color: 'Violeta' }
+]
+
+const datosGeneros = [
+    {Genero_Producto: 'Hombres'}, {Genero_Producto: 'Mujeres'}, {Genero_Producto: 'Unisex'}
+]
+
+const datosTalles = [
+    {Nom_Talle: 'S'}, {Nom_Talle: 'M'}, {Nom_Talle: 'L'}, {Nom_Talle: 'XL'}, {Nom_Talle: 'XXL'}
+]
+
+const datosDescuentos = [
+
+]
+
 export const tbPermisosUsers = db.define(
     "PermisoUsuario",
     {
@@ -456,5 +488,28 @@ tbCategoriaProd.hasMany(tbProducto, {
     foreignKey: { name: "fk_id_Categoria" },
 });
 
-tbProducto.belongsTo(tbCategoriaProd, { foreignKey: { name: 'fk_id_Categoria' }});
+tbProducto.belongsTo(tbCategoriaProd, { foreignKey: { name: 'fk_id_Categoria' } });
 tbCategoriaProd.hasMany(tbProducto, { foreignKey: { name: 'fk_id_Categoria' } });
+
+
+
+//tbPermisosUsers.bulkCreate(datosPermisos)
+//tbMarcaProd.bulkCreate(datosMarcas)
+//tbColorProd.bulkCreate(datosColores)
+//tbGeneroProd.bulkCreate(datosGeneros)
+//tbTalleProd.bulkCreate(datosTalles)
+
+// const promises = datosPermisos.map((permiso) => {
+//     return tbPermisosUsers.findOrCreate({
+//       where: { Nivel_Permiso: permiso.Nivel_Permiso },
+//       defaults: permiso
+//     });
+//   });
+  
+//   Promise.all(promises)
+//     .then((results) => {
+//       console.log('Registros creados exitosamente.');
+//     })
+//     .catch((error) => {
+//       console.error('Error al buscar o crear los registros:', error);
+//     });
