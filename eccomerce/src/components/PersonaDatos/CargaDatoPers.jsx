@@ -3,6 +3,9 @@ import { useFormik, Formik, Field, Form, ErrorMessage } from 'formik';
 const CargaDatoPers = () => {
 
     const initialValues = {
+        nombreUno: '',
+        nombreDos: '',
+        apellido: '',
         localidad: '',
         provincia: '',
         codPostal: 0,
@@ -26,20 +29,38 @@ const CargaDatoPers = () => {
     return (
         <div className='flex justify-center bg-slate-200'>
 
-            <form onSubmit={formik.handleSubmit}>
+            <form onSubmit={formik.handleSubmit} className='p-5'>
                 <label className="block mb-2 text-lg  font-medium text-gray-900 dark:text-white text-center">Formulario de Datos Personales</label>
                 <div className="grid gap-6 mb-6 md:grid-cols-2">
+                    {/* NombreUno */}
+                    <div>
+                        <label htmlFor="nombreUno" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Primer Nombre</label>
+                        <input onChange={formik.handleChange} name='nombreUno' type="text" id="nombreUno" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Formosa" required />
+                    </div>
+                    {/* NombreUno */}
+                    {/* NombreDos */}
+                    <div className=''>
+                        <label htmlFor="nombreDos" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Segundo Nombre</label>
+                        <input onChange={formik.handleChange} name='nombreDos' type="text" id="nombreDos" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Formosa" required />
+                    </div>
+                    {/* NombreDos */}
+                    {/* Apellido */}
+                    <div>
+                        <label htmlFor="apellido" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
+                        <input onChange={formik.handleChange} name='apellido' type="text" id="apellido" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Formosa" required />
+                    </div>
+                    {/* Apellido */}
                     {/* Localidad */}
                     <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Localidad</label>
-                        <input onChange={formik.handleChange} name='localidad' type="text" id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Formosa" required />
+                        <label htmlFor="localidad" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Localidad</label>
+                        <input onChange={formik.handleChange} name='localidad' type="text" id="localidad" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Formosa" required />
                     </div>
                     {/* Localidad */}
 
 
                     {/* Provincia */}
                     <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provincia</label>
+                        <label htmlFor="provincia" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provincia</label>
                         <input onChange={formik.handleChange} name='provincia' type="text" id="provincia" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Formosa" required />
                     </div>
                     {/* Provincia */}
