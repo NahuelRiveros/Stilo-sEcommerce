@@ -20,7 +20,12 @@ const Navbar = () => {
             <img src={logo2} alt="logo" className="md:cursor-pointer md:w-16 w-10 rounded-full" />
           </Link>
           {/* ITEMS NAVBAR BURGER */}
-          <div className="text-3xl flex items-center  gap-3 min-[768px]:hidden" onClick={() => setOpen(!open)}>
+
+          <div className="text-3xl flex items-center  gap-3 min-[768px]:hidden" >
+
+            <Link className='max-[500px]:hidden' to={'/login'} >
+              <img src={userInfo ? userInfo.image : User} alt="UserIMG" className='w-8 h-8 rounded-full' />
+            </Link>
             <Link className='' to={'/card'}>
               <div className='relative'>
                 <ShoppingBagOutlinedIcon fontSize='large' />
@@ -29,23 +34,21 @@ const Navbar = () => {
                 </span>
               </div>
             </Link>
-
-            <Link className='max-[500px]:hidden' to={'/login'}>
-              <img src={userInfo ? userInfo.image : User} alt="UserIMG" className='w-8 h-8 rounded-full' />
-            </Link>
             {
               userInfo && <p className='text-base font-bodyFont
                  font-semibold underline underline-offset-2 max-[500px]:hidden'>
                 {userInfo.name}
               </p>
             }
+            <div onClick={() => setOpen(!open)}>
 
-            {open ?
-              <CloseIcon fontSize="large" />
-              :
-              <MenuRoundedIcon name={`${open ? "close" : "menu"}`} fontSize="large" />
+              {open ?
+                <CloseIcon fontSize="large" />
+                :
+                <MenuRoundedIcon name={`${open ? "close" : "menu"}`} fontSize="large" />
 
-            }
+              }
+            </div>
           </div>
           {/* ITEMS NAVBAR BURGER */}
 
