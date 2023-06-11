@@ -16,7 +16,6 @@ import {
   Outlet,
   ScrollRestoration
 } from "react-router-dom";
-import db from '../../server/database/db.js'
 
 //LLAMADO PRODUCTO DESDE LA BD
 // Datos de ejemplo de productos
