@@ -39,14 +39,24 @@ const Login = () => {
 
 
         async function registro() {
-          const URI = "http://localhost:8000/stilos/registroUsuario/";
-          await axios.post(URI, { id: user.uid, email: user.email }).then((res) => {
+          const URI1 = "http://localhost:8000/stilos/registroUsuario/";
+          const URI2 = "http://localhost:8000/stilos/PersonaExiste/";
+          await axios.post(URI1, { id: user.uid, email: user.email }).then((res) => {
             if (!res.data.msg) {
               console.log("error en el inicio de sesion")
             } else {
-              console.log('entro')
-              console.log('Se ha registrado correctamente')
+              console.log("Se ha registrado con exito")
+            }
+          })
+          await axios.post(URI2, {id:user.uid}).then((res) => {
+            if (res.data.exist) {
               navigate('/')
+            }
+            if (res.data.no) {
+              navigate('/DatoPersonales')
+            }
+            if (res.data.error) {
+              console.log(res.data.error)
             }
           })
 

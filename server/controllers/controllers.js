@@ -9,16 +9,41 @@ export const registrarUsuario = async (req, res) => {
     try {
         const { id, email } = req.body;
 
-        const creadoUsuario = await tbUsuario.create({
-            id_Usuario: id,
-            Email: email,
-            fk_id_PermisoUsuario: 3,
-        });
-        res.json({ msg: "Creado correctamente" });
+        const existeUsuario = await tbUsuario.findOne({ where: { id_Usuario: id } })
+
+        if (existeUsuario) {
+            res.json({ exist: "el usuario ya existe" })
+        } else {
+            const creadoUsuario = await tbUsuario.create({
+                id_Usuario: id,
+                Email: email,
+                fk_id_PermisoUsuario: 3,
+            });
+            res.json({ msg: "Creado correctamente" });
+        }
+
     } catch (err) {
         res.json({ error: err.message });
     }
 };
+
+export const PersonaExiste = async (req, res) => {
+
+    try {
+
+        const { id } = req.body;
+
+        const existePersona = await tbPersona.findOne({ where: { fk_id_Usuario: id } })
+
+        if (existePersona) {
+            res.json({ exist: "Esta persona existe" })
+        } else {
+            res.json({ no: "esta persona no existe" })
+        } 
+    } catch (err) {
+        res.json({ error: err.message });
+    }
+}
 
 export const registrarPersona = async (req, res) => {
     try {
@@ -99,4 +124,4 @@ export const nuevoProducto = async (req, res) => {
     }
 };
 
-export const listaMarcas = async (req, res) => {};
+export const listaMarcas = async (req, res) => { };
