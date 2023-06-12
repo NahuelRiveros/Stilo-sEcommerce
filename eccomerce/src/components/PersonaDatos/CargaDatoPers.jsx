@@ -26,9 +26,22 @@ const CargaDatoPers = () => {
 
     const formik = useFormik({
         initialValues,
-        onSubmit: (values) => {
-            console.log(values); // Aquí puedes agregar la lógica para enviar los datos del formulario
-        },
+        onSubmit: async (values) => {
+            console.log(values);
+            // const URI = "http://localhost:8000/stilos/";
+            // await axios.post(URI, { values }).then((res) => {
+            //     console.log(user.uid)
+            //     console.log(res.data)
+            //     if (!res.data.msg) {
+            //         console.log("error en el inicio de sesion")
+            //     } else {
+            //         console.log('entro')
+            //         console.log('Se ha registrado correctamente')
+            //     }
+            // })
+
+        }// Aquí puedes agregar la lógica para enviar los datos del formulario
+        ,
     });
     return (
         <div className='flex justify-center bg-slate-200'>

@@ -78,7 +78,7 @@ const Login = () => {
 
         setTimeout(() => {
           registro()
-          navigate('/')
+          navigate('/DatoPersonales')
         }, 1500)
         console.log(user)
         // IdP data available using getAdditionalUserInfo(result)
