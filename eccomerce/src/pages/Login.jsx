@@ -48,7 +48,7 @@ const Login = () => {
             } else {
               console.log('entro')
               console.log('Se ha registrado correctamente')
-              navigate('/')
+
             }
           })
 
@@ -70,7 +70,7 @@ const Login = () => {
 
         setTimeout(() => {
           registro()
-          navigate('/')
+          navigate('/DatoPersonales')
         }, 1500)
         console.log(user)
         // IdP data available using getAdditionalUserInfo(result)
