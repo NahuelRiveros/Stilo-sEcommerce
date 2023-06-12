@@ -452,6 +452,51 @@ export const tbCarritoDetalle = db.define(
     { freezeTableName: true }
 );
 
+export const tbFactura = db.define(
+    "Factura",
+    {
+        id_Factura: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            autoIncrement: true,
+            primaryKey: true,
+        },
+        Detalles_Pertinentes: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        Descuento_Total: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        },
+        impuestos: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        },
+        Fecha_Compra: {
+            type: DataTypes.DATE,
+            allowNull: true,
+        },
+        Metodo_Pago: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        impuestos: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        fk_id_Carrito_Detalle: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: "Carrito_Detalle",
+                key: "id_Carrito_Detalle",
+            },
+        }
+    },
+    { freezeTableName: true }
+);
+
 //Relaciones
 
 //PermisoUsuario a Usuario
@@ -492,6 +537,15 @@ tbCarritoDetalle.belongsTo(tbProducto, {
 });
 tbProducto.hasMany(tbCarritoDetalle, {
     foreignKey: { name: "fk_id_Producto" },
+});
+
+// Carrito_Detalle a Factura
+
+tbFactura.belongsTo(tbCarritoDetalle, {
+    foreignKey: { name: "fk_id_Carrito_Detalle" },
+});
+tbCarritoDetalle.hasMany(tbFactura, {
+    foreignKey: { name: "fk_id_Carrito_Detalle" },
 });
 
 //Relaciones para el filtro de productos
