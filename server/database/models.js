@@ -233,7 +233,7 @@ export const tbUsuario = db.define(
     "Usuario",
     {
         id_Usuario: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             autoIncrement: false,
             primaryKey: true,

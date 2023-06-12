@@ -2,8 +2,8 @@ import { tbUsuario, tbPersona, tbDomicilio, tbProducto } from '../database/model
 
 export const registrarUsuario = async (req, res) => {
     try {
-        const { uuid, email } = req.body
-        const creadoUsuario = await tbUsuario.create({ id_Usuario: uuid, Email:email, fk_id_PermisoUsuario: 3})
+        const { id, email } = req.body
+        const creadoUsuario = await tbUsuario.create({ id_Usuario: id, Email:email, fk_id_PermisoUsuario: 3})
         res.json({ msg: "Creado correctamente" })
     } catch (err) {
         res.json({ error: err.message })
