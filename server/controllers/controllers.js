@@ -58,7 +58,7 @@ export const registrarPersona = async (req, res) => {
         } = req.body;
         const { barrio, calle, numCasa, departamento, numPiso, codPostal } =
             req.body;
-        const { uuid } = req.body;
+        const { id } = req.body;
         const crearPersona = await tbPersona.create({
             Nombre: nombreUno,
             Segundo_Nombre: nombreDos,
@@ -67,10 +67,10 @@ export const registrarPersona = async (req, res) => {
             Provincia: provincia,
             Genero: generoPers,
             Telefono: numeroCel,
-            fk_id_Usuario: uuid,
+            fk_id_Usuario: id,
         });
         const Persona = await tbPersona.findAll({
-            where: { fk_id_Usuario: uuid },
+            where: { fk_id_Usuario: id },
         });
         const { id_Persona } = Persona;
         const crearDomicilio = await tbDomicilio.create({
