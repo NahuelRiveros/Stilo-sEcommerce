@@ -14,9 +14,10 @@ async function createTables() {
         console.log("Tablas creadas en la base de datos.");
     } catch (error) {
         console.error("Error al crear las tablas:", error);
-    } finally {
-        db.close();
     }
+    // finally {
+    //     db.close();
+    // }
 }
 
 createTables();

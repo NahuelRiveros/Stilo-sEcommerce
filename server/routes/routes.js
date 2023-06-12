@@ -1,9 +1,9 @@
-import express from 'express';
-import { registrarUsuario, nuevoProducto } from '../controllers/controllers.js';
+import express from "express";
+import { registrarUsuario, nuevoProducto } from "../controllers/controllers.js";
 
-const rutas = express.Router()
+const rutas = express.Router();
 
-rutas.post('/registroUsuario/', registrarUsuario)
-rutas.post('/InsertProducto/', nuevoProducto)
+rutas.post("/registroUsuario/", registrarUsuario);
+rutas.post("/InsertProducto/", nuevoProducto);
 
-export default rutas
+export default rutas;

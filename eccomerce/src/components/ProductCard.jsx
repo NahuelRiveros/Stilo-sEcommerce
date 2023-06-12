@@ -6,7 +6,8 @@ import { addToCart } from '../redux/bazarSlice';
 import { ToastContainer, toast } from 'react-toastify';
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch()
-  console.log(product)
+  // Todos las cartas y productos
+  // console.log(product)
   //Formatenado el nombre de la Ruta para ver detalles del producto al tocar la imagen
   const navigate = useNavigate()
   const producSelectHandle = product.detalle
@@ -15,7 +16,7 @@ const ProductCard = ({ product }) => {
   }
   //FUNCION REFORMAR EL NOMBRE DE LA RUTA Y DIRECCIONAR A OTRA PAGINA
   const rootId = idString(producSelectHandle)
-  console.log(rootId)
+  // console.log(rootId)
   //Rutas al dar click en el evento
   const handleDetalles = () => {
     navigate(`/infoProducto/${rootId}`, {

@@ -36,23 +36,38 @@ const Login = () => {
           email: user.email,
         };
         const userData = JSON.stringify(userData1)
-        console.log(JSON.stringify(userData))
 
-        const registro = async () => {
-          const URI = "http://localhost:5173/registroUsuario/'";
-          await axios.post(URI, { userData }).then((res) => {
+
+        async function registro() {
+          const URI = "http://localhost:8000/stilos/registroUsuario/";
+          await axios.post(URI, { id: user.uid, email: user.email }).then((res) => {
             if (!res.data.msg) {
               console.log("error en el inicio de sesion")
             } else {
-              console.log(res.msg)
+              console.log('entro')
               console.log('Se ha registrado correctamente')
               navigate('/')
             }
           })
+
         }
+
+        // const registro = async () => {
+        //   const URI = "http://localhost:5173/registroUsuario/'";
+        //   await axios.post(URI, { userData }).then((res) => {
+        //     if (!res.data.msg) {
+        //       console.log("error en el inicio de sesion")
+        //     } else {
+        //       console.log(res.msg)
+        //       console.log('Se ha registrado correctamente')
+        //       navigate('/')
+        //     }
+        //   })
+        // }
 
 
         setTimeout(() => {
+          registro()
           navigate('/')
         }, 1500)
         console.log(user)
