@@ -7,9 +7,8 @@ import {
 
 export const registrarUsuario = async (req, res) => {
     try {
-        // const { id, email:req.body. } = req.body;
-        const nahuel = { id: req.body.id, email: req.body.email };
-        console.log(nahuel);
+        const { id, email } = req.body;
+
         const creadoUsuario = await tbUsuario.create({
             id_Usuario: id,
             Email: email,
