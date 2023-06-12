@@ -41,8 +41,6 @@ const Login = () => {
         async function registro() {
           const URI = "http://localhost:8000/stilos/registroUsuario/";
           await axios.post(URI, { id: user.uid, email: user.email }).then((res) => {
-            console.log(user.uid)
-            console.log(res.data)
             if (!res.data.msg) {
               console.log("error en el inicio de sesion")
             } else {
