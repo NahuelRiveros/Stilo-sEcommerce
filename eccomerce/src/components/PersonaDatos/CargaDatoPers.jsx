@@ -21,6 +21,7 @@ const CargaDatoPers = () => {
 
 
     };
+
     const userInfo = useSelector((state) => state.bazar.userInfo)
     console.log(userInfo)
     const formik = useFormik({
