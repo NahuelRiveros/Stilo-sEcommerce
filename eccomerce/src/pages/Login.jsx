@@ -36,11 +36,12 @@ const Login = () => {
           email: user.email,
         };
         const userData = JSON.stringify(userData1)
-        console.log(JSON.stringify(userData))
+        console.log(userData)
 
         async function registro() {
           const URI = "http://localhost:8000/stilos/registroUsuario/";
           await axios.post(URI, { userData }).then((res) => {
+            console.log(res.data)
             if (!res.data.msg) {
               console.log("error en el inicio de sesion")
             } else {
@@ -70,7 +71,7 @@ const Login = () => {
 
         setTimeout(() => {
           registro()
-          console.log('hola')
+
           navigate('/')
         }, 1500)
         console.log(user)

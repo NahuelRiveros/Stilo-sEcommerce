@@ -2,36 +2,54 @@ import db from "./db.js";
 import { DataTypes } from "sequelize";
 
 const datosPermisos = [
-    { id_PermisoUsuario: 1, Nivel_Permiso: 'Admin' }, { id_PermisoUsuario: 2, Nivel_Permiso: 'Empleado' }, { id_PermisoUsuario: 3, Nivel_Permiso: 'Usuario' }
-]
+    { id_PermisoUsuario: 1, Nivel_Permiso: "Admin" },
+    { id_PermisoUsuario: 2, Nivel_Permiso: "Empleado" },
+    { id_PermisoUsuario: 3, Nivel_Permiso: "Usuario" },
+];
 
-const datosCategoria = [
-
-]
+const datosCategoria = [];
 
 const datosMarcas = [
-    { Nom_Marca: 'Bando' }, { Nom_Marca: 'Bravo' }, { Nom_Marca: 'BBN' }, { Nom_Marca: 'Raiders' },
-    { Nom_Marca: 'Taverniti' }, { Nom_Marca: 'Gell' }, { Nom_Marca: 'Beckon' }, { Nom_Marca: 'Maycla' },
-    { Nom_Marca: 'Diosa' }, { Nom_Marca: 'USA' }, { Nom_Marca: 'Panther' }
-]
+    { Nom_Marca: "Bando" },
+    { Nom_Marca: "Bravo" },
+    { Nom_Marca: "BBN" },
+    { Nom_Marca: "Raiders" },
+    { Nom_Marca: "Taverniti" },
+    { Nom_Marca: "Gell" },
+    { Nom_Marca: "Beckon" },
+    { Nom_Marca: "Maycla" },
+    { Nom_Marca: "Diosa" },
+    { Nom_Marca: "USA" },
+    { Nom_Marca: "Panther" },
+];
 
 const datosColores = [
-    { Nom_Color: 'Rojo' }, { Nom_Color: 'Blanco' }, { Nom_Color: 'Negro' },
-    { Nom_Color: 'Azul' }, { Nom_Color: 'Rosa' }, { Nom_Color: 'Verde' },
-    { Nom_Color: 'Marron' }, { Nom_Color: 'Amarillo' }, { Nom_Color: 'Violeta' }
-]
+    { Nom_Color: "Rojo" },
+    { Nom_Color: "Blanco" },
+    { Nom_Color: "Negro" },
+    { Nom_Color: "Azul" },
+    { Nom_Color: "Rosa" },
+    { Nom_Color: "Verde" },
+    { Nom_Color: "Marron" },
+    { Nom_Color: "Amarillo" },
+    { Nom_Color: "Violeta" },
+];
 
 const datosGeneros = [
-    { Genero_Producto: 'Hombres' }, { Genero_Producto: 'Mujeres' }, { Genero_Producto: 'Unisex' }
-]
+    { Genero_Producto: "Hombres" },
+    { Genero_Producto: "Mujeres" },
+    { Genero_Producto: "Unisex" },
+];
 
 const datosTalles = [
-    { Nom_Talle: 'S' }, { Nom_Talle: 'M' }, { Nom_Talle: 'L' }, { Nom_Talle: 'XL' }, { Nom_Talle: 'XXL' }
-]
+    { Nom_Talle: "S" },
+    { Nom_Talle: "M" },
+    { Nom_Talle: "L" },
+    { Nom_Talle: "XL" },
+    { Nom_Talle: "XXL" },
+];
 
-const datosDescuentos = [
-
-]
+const datosDescuentos = [];
 
 export const tbPermisosUsers = db.define(
     "PermisoUsuario",
@@ -233,16 +251,16 @@ export const tbUsuario = db.define(
     "Usuario",
     {
         id_Usuario: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             autoIncrement: false,
             primaryKey: true,
-            unique: true
+            unique: true,
         },
         Email: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
+            unique: true,
         },
         fk_id_PermisoUsuario: {
             type: DataTypes.INTEGER,
@@ -271,7 +289,7 @@ export const tbPersona = db.define(
         },
         Segundo_Nombre: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
         },
         Apellido: {
             type: DataTypes.STRING,
@@ -294,13 +312,13 @@ export const tbPersona = db.define(
             allowNull: false,
         },
         fk_id_Usuario: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             references: {
                 model: "Usuario",
                 key: "id_Usuario",
             },
-        }
+        },
     },
     { freezeTableName: true }
 );
@@ -364,7 +382,7 @@ export const tbCarrito = db.define(
             allowNull: true,
         },
         fk_id_Usuario: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             references: {
                 model: "Usuario",
@@ -486,10 +504,12 @@ tbCategoriaProd.hasMany(tbProducto, {
     foreignKey: { name: "fk_id_Categoria" },
 });
 
-tbProducto.belongsTo(tbCategoriaProd, { foreignKey: { name: 'fk_id_Categoria' } });
-tbCategoriaProd.hasMany(tbProducto, { foreignKey: { name: 'fk_id_Categoria' } });
-
-
+tbProducto.belongsTo(tbCategoriaProd, {
+    foreignKey: { name: "fk_id_Categoria" },
+});
+tbCategoriaProd.hasMany(tbProducto, {
+    foreignKey: { name: "fk_id_Categoria" },
+});
 
 //tbPermisosUsers.bulkCreate(datosPermisos)
 //tbMarcaProd.bulkCreate(datosMarcas)
@@ -500,89 +520,89 @@ tbCategoriaProd.hasMany(tbProducto, { foreignKey: { name: 'fk_id_Categoria' } })
 const crearPermisosDefault = datosPermisos.map((permiso) => {
     return tbPermisosUsers.findOrCreate({
         where: { Nivel_Permiso: permiso.Nivel_Permiso },
-        defaults: permiso
+        defaults: permiso,
     });
 });
 
 Promise.all(crearPermisosDefault)
     .then((results) => {
-        console.log('Registros creados exitosamente.');
+        console.log("Registros creados exitosamente.");
     })
     .catch((error) => {
-        console.error('Error al buscar o crear los registros:', error);
+        console.error("Error al buscar o crear los registros:", error);
     });
 
 const crearCategoriasDefault = datosCategoria.map((categoria) => {
     return tbCategoriaProd.findOrCreate({
         where: { Nom_Categoria: categoria.Nom_Categoria },
-        defaults: categoria
+        defaults: categoria,
     });
 });
 
 Promise.all(crearCategoriasDefault)
     .then((results) => {
-        console.log('Registros creados exitosamente.');
+        console.log("Registros creados exitosamente.");
     })
     .catch((error) => {
-        console.error('Error al buscar o crear los registros:', error);
+        console.error("Error al buscar o crear los registros:", error);
     });
 
 const crearMarcasDefault = datosMarcas.map((marca) => {
     return tbMarcaProd.findOrCreate({
         where: { Nom_Marca: marca.Nom_Marca },
-        defaults: marca
+        defaults: marca,
     });
 });
 
 Promise.all(crearMarcasDefault)
     .then((results) => {
-        console.log('Registros creados exitosamente.');
+        console.log("Registros creados exitosamente.");
     })
     .catch((error) => {
-        console.error('Error al buscar o crear los registros:', error);
+        console.error("Error al buscar o crear los registros:", error);
     });
 
 const crearColoresDefault = datosColores.map((color) => {
     return tbColorProd.findOrCreate({
         where: { Nom_Color: color.Nom_Color },
-        defaults: color
+        defaults: color,
     });
 });
 
 Promise.all(crearColoresDefault)
     .then((results) => {
-        console.log('Registros creados exitosamente.');
+        console.log("Registros creados exitosamente.");
     })
     .catch((error) => {
-        console.error('Error al buscar o crear los registros:', error);
+        console.error("Error al buscar o crear los registros:", error);
     });
 
 const crearGenerosDefault = datosGeneros.map((genero) => {
     return tbGeneroProd.findOrCreate({
         where: { Genero_Producto: genero.Genero_Producto },
-        defaults: genero
+        defaults: genero,
     });
 });
 
 Promise.all(crearGenerosDefault)
     .then((results) => {
-        console.log('Registros creados exitosamente.');
+        console.log("Registros creados exitosamente.");
     })
     .catch((error) => {
-        console.error('Error al buscar o crear los registros:', error);
+        console.error("Error al buscar o crear los registros:", error);
     });
 
 const crearTallesDefault = datosTalles.map((talle) => {
     return tbTalleProd.findOrCreate({
         where: { Nom_Talle: talle.Nom_Talle },
-        defaults: talle
+        defaults: talle,
     });
 });
 
 Promise.all(crearTallesDefault)
     .then((results) => {
-        console.log('Registros creados exitosamente.');
+        console.log("Registros creados exitosamente.");
     })
     .catch((error) => {
-        console.error('Error al buscar o crear los registros:', error);
+        console.error("Error al buscar o crear los registros:", error);
     });

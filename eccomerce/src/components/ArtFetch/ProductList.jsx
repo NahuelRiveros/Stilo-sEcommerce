@@ -8,7 +8,7 @@ const ProductList = ({ searchQuery, category, size, color }) => {
 
 
 
-    console.log(products)
+    // console.log(products)
 
     // Filtra los productos según la categoría seleccionada y el término de búsqueda
     const filteredProducts = products.filter((product) => {

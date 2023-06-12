@@ -30,7 +30,7 @@ export const Marcas = () => {
                                 col-span-full row-span-full animate-word-delay-${index}`}
                             >
                                 {service}
-                                {console.log(`-> ${index} , ->${service}`)}
+                                {/* {console.log(`-> ${index} , ->${service}`)} */}
                             </span>
                         ))}
                     </div>
