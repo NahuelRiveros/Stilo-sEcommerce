@@ -7,10 +7,10 @@ import { ToastContainer, toast } from 'react-toastify';
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch()
   // Todos las cartas y productos
-  // console.log(product)
+  console.log(product)
   //Formatenado el nombre de la Ruta para ver detalles del producto al tocar la imagen
   const navigate = useNavigate()
-  const producSelectHandle = product.detalle
+  const producSelectHandle = product.Categoria_Producto.Nom_Categoria
   const idString = (producSelectHandle) => {
     return String(producSelectHandle).toLowerCase().split(' ').join('');
   }
@@ -29,45 +29,48 @@ const ProductCard = ({ product }) => {
     <div className='group border shadow-lg bg-slate-100 relative'>
       <div className='w-full h-58 cursor-pointer overflow-hidden' onClick={handleDetalles}>
         <img className='w-full h-full object-cover group-hover:scale-110 duration-500'
-          src={product.image} alt="productImg" />
+          src={product.Img_Producto} alt="productImg" />
       </div>
       {/* FOOTER CARD */}
       <div className='w-full boder-[1px] px-2
          py-5 '>
         <div className='flex justify-between items-center'>
           <div className='font-titleFont font-semibold'>
-            <h2>{product.detalle.substring(0, 25)}</h2>
+            <h2>{product.Detalle_Producto.substring(0, 25)}</h2>
           </div>
           <div className='flex gap-2 relative overflow-hidden'>
             <div className='flex gap-2 transform lg:group-hover:translate-x-24 transition-transform duration-500'>
 
               {/* SIRVE PARA OFERTAS <p className='line-through text-gray-500'>{product.price}</p> */}
-              <p className='font-serif'>${product.price}</p>
+              <p className='font-serif'>${product.Precio_Producto}</p>
             </div>
             <div >
               {/* Falta agregar una descipcion al producto */}
               <span onClick={() => dispatch(addToCart({
-                id: product.id,
-                title: product.detalle,
-                image: product.image,
-                marca: product.brand,
-                price: product.price,
+                id: product.id_Producto,
+                title: product.Detalle_Producto,
+                image: product.Img_Producto,
+                marca: product.Marca_Producto.Nom_Marca,
+                price: product.Precio_Producto,
                 cantidad: 1
 
-              })) & toast.success(`se agrego ${product.detalle} al carro`)
+              })) & toast.success(`se agrego ${product.Detalle_Producto} al carro`)
               } className='lg:absolute z-20 w-[100px] lg:text-gray-400 lg:hover:text-orange-400 
               text-red-500 flex-item-center gap-1 -top-0.5 lg:transform lg:-translate-x-32 lg:group-hover:-translate-x-8 lg:transition-transform cursor-pointer lg:duration-500 '><AddShoppingCartIcon /></span>
             </div>
           </div>
         </div>
         <div className='font-titleFont font-semibold'>
-          <p className='rounded-full inline-block px-2 text-center bg-orange-600'>{product.brand}</p>
+          <p className='rounded-full inline-block px-2 text-center bg-orange-600'>{product.Marca_Producto.Nom_Marca}</p>
         </div>
         <div className='font-titleFont font-semibold'>
-          <p>Talle {product.size}</p>
+          <p>Talle {product.Talle_Producto.Nom_Talle}</p>
+        </div>
+        <div className='font-titleFont font-semibold'>
+          <p>Categoria - {product.Categoria_Producto.Nom_Categoria}</p>
         </div>
         <div className='absolute top-4 right-0 bg-orange-600'>
-          <p>Talle {product.size}</p>
+          <p>Talle {product.Talle_Producto.Nom_Talle}</p>
         </div>
       </div>
 

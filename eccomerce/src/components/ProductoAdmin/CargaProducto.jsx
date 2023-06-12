@@ -13,12 +13,12 @@ const CargaProducto = () => {
     // const [infoProduc, setInfoProduc] = useState([])
     const initialValues = {
         detalle_Producto: '',
-        categoria: '',
-        descuento: '',
-        talle: '',
-        marca: '',
-        genero: '',
-        color: '',
+        categoria: 0,
+        descuento: 0,
+        talle: 0,
+        marca: 0,
+        genero: 0,
+        color: 0,
         precio: 0,
         cantidad: 0,
         image: null,
@@ -27,7 +27,7 @@ const CargaProducto = () => {
     const formik = useFormik({
         initialValues,
         onSubmit: async (values) => {
-            console.log(values);
+            console.log(parseInt(values.categoria), values);
             const URI = "http://localhost:8000/stilos/InsertProducto/";
             await axios.post(URI, { values }).then((res) => {
                 if (!res.data.msg) {
@@ -99,7 +99,7 @@ const CargaProducto = () => {
                              peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="categoria" id="categoria" onChange={formik.handleChange}>
                                 <option value="">ninguno</option>
                                 {categoria.map((item) => (
-                                    <option key={item.id_Categoria} value={item.id_Categoria}>{item.Nom_Categoria}</option>
+                                    <option key={item.id_Categoria} value={parseInt(item.id_Categoria)}>{item.Nom_Categoria}</option>
                                 ))
 
                                 }
@@ -173,13 +173,19 @@ const CargaProducto = () => {
                             <div className=' items-center gap-2 text-white flex'>
 
                                 <label htmlFor="" className='pl-2'>Mujeres</label>
-                                <input name='genero' value="femenino"
+                                <input name='genero' value={2}
                                     type="radio"
                                     onChange={formik.handleChange} />
                                 <label htmlFor="">Hombres</label>
                                 <input
                                     name='genero'
-                                    value="masculino"
+                                    value={1}
+                                    type="radio"
+                                    onChange={formik.handleChange} />
+                                <label htmlFor="">Uni-Sex</label>
+                                <input
+                                    name='genero'
+                                    value={3}
                                     type="radio"
                                     onChange={formik.handleChange} />
                             </div>

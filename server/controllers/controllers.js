@@ -103,31 +103,31 @@ export const registrarPersona = async (req, res) => {
 };
 
 export const nuevoProducto = async (req, res) => {
+    const Producto = {
+        detalle_Producto: req.body.values.detalle_Producto,
+        categoria: parseInt(req.body.values.categoria),
+        descuento: parseInt(req.body.values.descuento),
+        talle: parseInt(req.body.values.talle),
+        marca: parseInt(req.body.values.marca),
+        genero: parseInt(req.body.values.genero),
+        color: parseInt(req.body.values.color),
+        precio: parseInt(req.body.values.precio),
+        cantidad: parseInt(req.body.values.cantidad),
+        image: req.body.image,
+    };
+    console.log(Producto);
     try {
-        const {
-            detalle_Producto,
-            categoria,
-            descuento,
-            talle,
-            marca,
-            genero,
-            color,
-            precio,
-            cantidad,
-            image,
-        } = req.body;
-
         const AddingProd = await tbProducto.create({
-            Existencia_Producto: cantidad,
-            Img_Producto: image,
-            Precio_Producto: precio,
-            Detalle_Producto: detalle_Producto,
-            fk_id_Color: color,
-            fk_id_Genero: genero,
-            fk_id_Marca: marca,
-            fk_id_Talle: talle,
-            fk_id_Descuento: descuento,
-            fk_id_Categoria: categoria,
+            Existencia_Producto: Producto.cantidad,
+            Img_Producto: Producto.image,
+            Precio_Producto: Producto.precio,
+            Detalle_Producto: Producto.detalle_Producto,
+            fk_id_Color: Producto.color,
+            fk_id_Genero: Producto.genero,
+            fk_id_Marca: Producto.marca,
+            fk_id_Talle: Producto.talle,
+            fk_id_Descuento: Producto.descuento,
+            fk_id_Categoria: Producto.categoria,
         });
 
         return res.json({ msg: "Se ha realizado con éxito" });
@@ -150,7 +150,34 @@ export const articuloInfo = async (req, res) => {
 
 export const getAllProductos = async (req, res) => {
     const productos = await tbProducto.findAll({
-        limit: 12
+        limit: 12,
+        include: [
+            {
+                model: tbCategoriaProd,
+                attributes: ["Nom_Categoria"],
+            },
+            {
+                model: tbGeneroProd,
+                attributes: ["Genero_Producto"],
+            },
+            {
+                model: tbColorProd,
+                attributes: ["Nom_Color"],
+            },
+            {
+                model: tbMarcaProd,
+                attributes: ["Nom_Marca"],
+            },
+            {
+                model: tbTalleProd,
+                attributes: ["Nom_Talle"],
+            },
+            {
+                model: tbDescuentoProd,
+                attributes: ["Num_Descuento"],
+            },
+        ],
     });
-    res.json(productos)
-}
+    console.log(productos);
+    res.json(productos);
+};

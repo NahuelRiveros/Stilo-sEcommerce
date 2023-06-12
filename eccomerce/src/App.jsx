@@ -241,17 +241,6 @@ import axios from 'axios';
 
 // }
 
-const productBD = async (req,res) => {
-  const URI = "http://localhost:8000/stilos/homeGetProd/"
-  try {
-    axios.get(URI).then((res) => {
-      const productos = res.data
-      return productos
-    })
-  } catch (err) {
-    console.log(err)
-  }
-}
 
 
 
@@ -272,6 +261,9 @@ const Layout = () => {
   )
 }
 
+
+
+
 const router = createBrowserRouter([{
   path: '/',
   element: <Layout />,
@@ -279,7 +271,7 @@ const router = createBrowserRouter([{
     {
       path: '/',
       element: <Home />,
-      loader: productBD,
+      // loader: productBD,
     },
     {
       path: 'infoProducto/:id',
@@ -295,8 +287,8 @@ const router = createBrowserRouter([{
     },
     {
       path: '/Producto/:id',
-      element: <MachArt />,
-      loader: productBD,
+      element: <MachArt />
+      // loader: productBD,
     }
     , {
       path: '/InsertProducto',
@@ -310,6 +302,7 @@ const router = createBrowserRouter([{
 }])
 
 function App() {
+
 
 
   return (
