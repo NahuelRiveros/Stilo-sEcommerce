@@ -19,13 +19,13 @@ import {
     tbProducto,
     tbTalleProd,
 } from "./database/models.js";
-import rutas from './routes/routes.js'
+import rutas from "./routes/routes.js";
 
 const env = dotevn.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use('/stilos', rutas)
+app.use("/stilos", rutas);
 const port = process.env.PORT;
 const Stripe = stripe(process.env.STRIPE_SECRET_KEY);
 app.use(bodyParser.json());
