@@ -12,7 +12,7 @@ export const registrarUsuario = async (req, res) => {
         const existeUsuario = await tbUsuario.findOne({ where: { id_Usuario: id } })
 
         if (existeUsuario) {
-            res.json({ exist: "el usuario ya existe" })
+            res.json({ msg: "el usuario ya existe", exist: "True" })
         } else {
             const creadoUsuario = await tbUsuario.create({
                 id_Usuario: id,
@@ -58,7 +58,7 @@ export const registrarPersona = async (req, res) => {
         } = req.body;
         const { barrio, calle, numCasa, departamento, numPiso, codPostal } =
             req.body;
-        const { id } = req.body;
+        const { id } = req.body.id;
         const crearPersona = await tbPersona.create({
             Nombre: nombreUno,
             Segundo_Nombre: nombreDos,
@@ -85,7 +85,7 @@ export const registrarPersona = async (req, res) => {
         return res.json({ msg: "Se ha realizado con éxito" });
     } catch (err) {
         console.log(err);
-        return res.json({ msgerr: "Error en el servidor" });
+        return res.json({ msgerr: "Error en el servidor", msgerr2 });
     }
 };
 
