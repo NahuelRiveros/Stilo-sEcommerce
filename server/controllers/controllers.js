@@ -147,3 +147,10 @@ export const articuloInfo = async (req, res) => {
 
     return res.json({ marca, talle, color, categoria, genero, descuento });
 };
+
+export const getAllProductos = async (req, res) => {
+    const productos = await tbProducto.findAll({
+        limit: 12
+    });
+    res.json(productos)
+}

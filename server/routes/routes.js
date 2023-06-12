@@ -5,6 +5,7 @@ import {
     PersonaExiste,
     registrarPersona,
     articuloInfo,
+    getAllProductos,
 } from "../controllers/controllers.js";
 
 const rutas = express.Router();
@@ -14,5 +15,6 @@ rutas.post("/PersonaExiste/", PersonaExiste);
 rutas.post("/formularioPersona/", registrarPersona);
 rutas.post("/InsertProducto/", nuevoProducto);
 rutas.get("/ObtArtInfo/", articuloInfo);
+rutas.get("/homeGetProd/", getAllProductos)
 
 export default rutas;
