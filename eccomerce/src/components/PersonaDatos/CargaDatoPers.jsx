@@ -1,7 +1,7 @@
 import React from 'react'
 import { useFormik, Formik, Field, Form, ErrorMessage } from 'formik';
-// import { useSelector } from 'react-redux';
-// const userInfo = useSelector((state) => state.bazar.userInfo)
+import { useSelector } from 'react-redux';
+
 const CargaDatoPers = () => {
 
     const initialValues = {
@@ -21,7 +21,7 @@ const CargaDatoPers = () => {
 
 
     };
-
+    const userInfo = useSelector((state) => state.bazar.userInfo)
     console.log(userInfo)
     const formik = useFormik({
         initialValues,
