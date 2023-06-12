@@ -5,7 +5,7 @@ const rutas = express.Router();
 
 rutas.post("/registroUsuario/", registrarUsuario);
 rutas.post("/PersonaExiste/", PersonaExiste);
-rutas.post("/formularioPersona", registrarPersona)
+rutas.post("/formularioPersona/", registrarPersona)
 rutas.post("/InsertProducto/", nuevoProducto);
 
 export default rutas;
