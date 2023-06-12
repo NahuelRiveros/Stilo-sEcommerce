@@ -43,12 +43,13 @@ const Login = () => {
           const URI2 = "http://localhost:8000/stilos/PersonaExiste/";
           await axios.post(URI1, { id: user.uid, email: user.email }).then((res) => {
             if (!res.data.msg) {
+
               console.log("error en el inicio de sesion")
             } else {
               console.log("Se ha registrado con exito")
             }
           })
-          await axios.post(URI2, {id:user.uid}).then((res) => {
+          await axios.post(URI2, { id: user.uid }).then((res) => {
             if (res.data.exist) {
               navigate('/')
             }

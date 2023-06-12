@@ -308,7 +308,7 @@ export const tbPersona = db.define(
             allowNull: false,
         },
         Telefono: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         fk_id_Usuario: {

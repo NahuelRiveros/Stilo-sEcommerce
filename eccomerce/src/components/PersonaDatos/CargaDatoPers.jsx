@@ -2,9 +2,10 @@ import React from 'react'
 import { useFormik, Formik, Field, Form, ErrorMessage } from 'formik';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 const CargaDatoPers = () => {
-
+    const navigate = useNavigate()
     const initialValues = {
         nombreUno: '',
         nombreDos: '',
@@ -30,11 +31,12 @@ const CargaDatoPers = () => {
         onSubmit: async (values) => {
             console.log(values);
             const URI = "http://localhost:8000/stilos/formularioPersona/";
-            await axios.post(URI, { values, id:userInfo.id }).then((res) => {
+            await axios.post(URI, { values, id: userInfo.id }).then((res) => {
                 if (!res.data.msg) {
                     console.log("Error al cargar los datos")
                 } else {
                     console.log('Se ha registrado correctamente')
+                    navigate('/')
                 }
             })
 

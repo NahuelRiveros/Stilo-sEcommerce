@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useFormik, Formik, Field, Form, ErrorMessage } from 'formik';
-
+import axios from 'axios';
 const CargaProducto = () => {
+    const [marca, setMarca] = useState([])
+    const [talle, setTalle] = useState([])
+    const [categoria, setCategoria] = useState([])
+    const [genero, setGenero] = useState([])
+    const [descuento, setDescuento] = useState([])
+    const [color, setColor] = useState([])
+    // const [infoProduc, setInfoProduc] = useState([])
+    // const [infoProduc, setInfoProduc] = useState([])
+    // const [infoProduc, setInfoProduc] = useState([])
     const initialValues = {
         detalle_Producto: '',
         categoria: '',
@@ -17,10 +26,38 @@ const CargaProducto = () => {
 
     const formik = useFormik({
         initialValues,
-        onSubmit: (values) => {
-            console.log(values); // Aquí puedes agregar la lógica para enviar los datos del formulario
+        onSubmit: async (values) => {
+            console.log(values);
+            const URI = "http://localhost:8000/stilos/InsertProducto/";
+            await axios.post(URI, { values }).then((res) => {
+                if (!res.data.msg) {
+                    console.log("Error al cargar los datos")
+                } else {
+                    console.log('Se ha registrado correctamente')
+                    // navigate('/')
+                }
+            })
+            // Aquí puedes agregar la lógica para enviar los datos del formulario
         },
     });
+    const reqDBinfoProducto = async () => {
+        const infoProductos = 'http://localhost:8000/stilos/ObtArtInfo/'
+        await axios.get(infoProductos).then((res) => {
+            // console.log(res.data)
+            setMarca(res.data.marca)
+            setCategoria(res.data.categoria)
+            setColor(res.data.color)
+            setGenero(res.data.genero)
+            setTalle(res.data.talle)
+            setDescuento(res.data.descuento)
+        })
+
+    }
+    useEffect(() => {
+        reqDBinfoProducto()
+    }, [])
+
+
 
     const listInfoProducto = [
         { id: 1, name: "name", type: "text" },
@@ -88,13 +125,17 @@ const CargaProducto = () => {
                             <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccionar talle</label>
                             <select className='flex select items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="talle" id="talle" onChange={formik.handleChange}>
                                 <option value="">ninguno</option>
-                                <option value="S">S</option>
-                                <option value="M">M</option>
+                                {talle.map((item) => (
+                                    <option key={talle.id_Talle} value={talle.id_Talle}>{talle.Nom_Talle}</option>
+                                ))
+
+                                }
+                                {/* <option value="M">M</option>
                                 <option value="L">L</option>
                                 <option value="XL">XL</option>
                                 <option value="2XL">2XL</option>
                                 <option value="3XL">3XL</option>
-                                <option value="4XL">4XL</option>
+                                <option value="4XL">4XL</option> */}
                             </select>
                         </div>
                         {/* seleccion talle */}
@@ -103,18 +144,24 @@ const CargaProducto = () => {
                             <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccionar marca</label>
                             <select className='flex select items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="marca" id="marca" onChange={formik.handleChange}>
                                 <option value="">ninguno</option>
-                                <option value="Raiders">Raiders</option>
-                                <option value="Bando">Bando</option>
-                                <option value="Taverniti">Taverniti</option>
-                                <option value="BBN">BBN</option>
-                                <option value="Bravo">Bravo</option>
-                                <option value="Abstracta">Abstracta</option>
-                                <option value="Gell">Gell</option>
-                                <option value="Beckon">Beckon</option>
-                                <option value="US Amerika">US Amerika</option>
-                                <option value="Panther">Panther</option>
-                                <option value="Diosa">Diosa</option>
-                                <option value="Maycla">Maycla</option>
+                                {marca.map((item) => (
+
+                                    <option key={item.id_Marca} value={item.id_Marca}>{item.Nom_Marca}</option>
+
+                                ))
+                                }
+                                {/* // <option value="Bando">Bando</option>
+                                // <option value="Taverniti">Taverniti</option>
+                                // <option value="BBN">BBN</option>
+                                // <option value="Bravo">Bravo</option>
+                                // <option value="Abstracta">Abstracta</option>
+                                // <option value="Gell">Gell</option>
+                                // <option value="Beckon">Beckon</option>
+                                // <option value="US Amerika">US Amerika</option>
+                                // <option value="Panther">Panther</option>
+                                // <option value="Diosa">Diosa</option>
+                                // <option value="Maycla">Maycla</option> */}
+
                             </select>
                         </div>
                         {/* seleccion marca */}

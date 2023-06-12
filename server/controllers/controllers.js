@@ -3,16 +3,24 @@ import {
     tbPersona,
     tbDomicilio,
     tbProducto,
+    tbMarcaProd,
+    tbTalleProd,
+    tbColorProd,
+    tbCategoriaProd,
+    tbGeneroProd,
+    tbDescuentoProd,
 } from "../database/models.js";
 
 export const registrarUsuario = async (req, res) => {
     try {
         const { id, email } = req.body;
 
-        const existeUsuario = await tbUsuario.findOne({ where: { id_Usuario: id } })
+        const existeUsuario = await tbUsuario.findOne({
+            where: { id_Usuario: id },
+        });
 
         if (existeUsuario) {
-            res.json({ msg: "el usuario ya existe", exist: "True" })
+            res.json({ msg: "el usuario ya existe", exist: "True" });
         } else {
             const creadoUsuario = await tbUsuario.create({
                 id_Usuario: id,
@@ -21,31 +29,31 @@ export const registrarUsuario = async (req, res) => {
             });
             res.json({ msg: "Creado correctamente" });
         }
-
     } catch (err) {
         res.json({ error: err.message });
     }
 };
 
 export const PersonaExiste = async (req, res) => {
-
     try {
-
         const { id } = req.body;
 
-        const existePersona = await tbPersona.findOne({ where: { fk_id_Usuario: id } })
+        const existePersona = await tbPersona.findOne({
+            where: { fk_id_Usuario: id },
+        });
 
         if (existePersona) {
-            res.json({ exist: "Esta persona existe" })
+            res.json({ exist: "Esta persona existe" });
         } else {
-            res.json({ no: "esta persona no existe" })
-        } 
+            res.json({ no: "esta persona no existe" });
+        }
     } catch (err) {
         res.json({ error: err.message });
     }
-}
+};
 
 export const registrarPersona = async (req, res) => {
+    console.log(req.body.values);
     try {
         const {
             nombreUno,
@@ -55,10 +63,11 @@ export const registrarPersona = async (req, res) => {
             provincia,
             generoPers,
             numeroCel,
-        } = req.body;
+        } = req.body.values;
         const { barrio, calle, numCasa, departamento, numPiso, codPostal } =
-            req.body;
-        const { id } = req.body.id;
+            req.body.values;
+
+        const { id } = req.body;
         const crearPersona = await tbPersona.create({
             Nombre: nombreUno,
             Segundo_Nombre: nombreDos,
@@ -72,7 +81,11 @@ export const registrarPersona = async (req, res) => {
         const Persona = await tbPersona.findAll({
             where: { fk_id_Usuario: id },
         });
-        const { id_Persona } = Persona;
+
+        const [objPersona] = Persona;
+        const { id_Persona } = objPersona.dataValues;
+        console.log(id_Persona);
+
         const crearDomicilio = await tbDomicilio.create({
             Calle: calle,
             Departamento: departamento,
@@ -124,4 +137,13 @@ export const nuevoProducto = async (req, res) => {
     }
 };
 
-export const listaMarcas = async (req, res) => { };
+export const articuloInfo = async (req, res) => {
+    const marca = await tbMarcaProd.findAll();
+    const talle = await tbTalleProd.findAll();
+    const color = await tbColorProd.findAll();
+    const categoria = await tbCategoriaProd.findAll();
+    const genero = await tbGeneroProd.findAll();
+    const descuento = await tbDescuentoProd.findAll();
+
+    return res.json({ marca, talle, color, categoria, genero, descuento });
+};
