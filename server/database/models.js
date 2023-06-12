@@ -7,7 +7,15 @@ const datosPermisos = [
     { id_PermisoUsuario: 3, Nivel_Permiso: "Usuario" },
 ];
 
-const datosCategoria = [];
+const datosCategoria = [
+    { Nom_Categoria: "Remeras" },
+    { Nom_Categoria: "Jeans" },
+    { Nom_Categoria: "Bermuda" },
+    { Nom_Categoria: "Chombas" },
+    { Nom_Categoria: "Camisas" },
+    { Nom_Categoria: "Polleras" }
+
+];
 
 const datosMarcas = [
     { Nom_Marca: "Bando" },
@@ -49,7 +57,13 @@ const datosTalles = [
     { Nom_Talle: "XXL" },
 ];
 
-const datosDescuentos = [];
+const datosDescuentos = [
+    { Num_Descuento: 0, Display_Descuento: '0%' },
+    { Num_Descuento: 5, Display_Descuento: '5%' },
+    { Num_Descuento: 10, Display_Descuento: '10%' },
+    { Num_Descuento: 15, Display_Descuento: '15%' },
+
+];
 
 export const tbPermisosUsers = db.define(
     "PermisoUsuario",
@@ -149,6 +163,10 @@ export const tbDescuentoProd = db.define(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        Display_Descuento: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
     },
     { freezeTableName: true }
 );
@@ -600,6 +618,21 @@ const crearTallesDefault = datosTalles.map((talle) => {
 });
 
 Promise.all(crearTallesDefault)
+    .then((results) => {
+        console.log("Registros creados exitosamente.");
+    })
+    .catch((error) => {
+        console.error("Error al buscar o crear los registros:", error);
+    });
+
+const crearDescuentosDefault = datosDescuentos.map((desc) => {
+    return tbDescuentoProd.findOrCreate({
+        where: { Num_Descuento: desc.Num_Descuento },
+        defaults: desc,
+    });
+});
+
+Promise.all(crearDescuentosDefault)
     .then((results) => {
         console.log("Registros creados exitosamente.");
     })

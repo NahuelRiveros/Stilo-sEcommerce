@@ -98,12 +98,11 @@ const CargaProducto = () => {
                             select items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300
                              peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="categoria" id="categoria" onChange={formik.handleChange}>
                                 <option value="">ninguno</option>
-                                <option value="Remeras">Remeras</option>
-                                <option value="Jeans">Jeans</option>
-                                <option value="Bermuda">Bermuda</option>
-                                <option value="Chombas">Chombas</option>
-                                <option value="Camisas">Camisas</option>
-                                <option value="Polleras">Polleras</option>
+                                {categoria.map((item) => (
+                                    <option key={item.id_Categoria} value={item.id_Categoria}>{item.Nom_Categoria}</option>
+                                ))
+
+                                }
 
                             </select>
                         </div>
@@ -114,9 +113,12 @@ const CargaProducto = () => {
                             <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccionar Descuentos</label>
                             <select className='flex select items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="descuento" id="descuento" onChange={formik.handleChange}>
                                 <option value="0">ninguno</option>
-                                <option value="5">5%</option>
-                                <option value="10">10%</option>
-                                <option value="15">15%</option>
+                                {descuento.map((item) => (
+                                    <option key={item.id_Descuento} value={item.id_Descuento}>{item.Display_Descuento}</option>
+                                ))
+
+                                }
+
                             </select>
                         </div>
                         {/* seleccion descuento */}
@@ -126,7 +128,7 @@ const CargaProducto = () => {
                             <select className='flex select items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="talle" id="talle" onChange={formik.handleChange}>
                                 <option value="">ninguno</option>
                                 {talle.map((item) => (
-                                    <option key={talle.id_Talle} value={talle.id_Talle}>{talle.Nom_Talle}</option>
+                                    <option key={item.id_Talle} value={item.id_Talle}>{item.Nom_Talle}</option>
                                 ))
 
                                 }
@@ -188,16 +190,12 @@ const CargaProducto = () => {
                             <label className="flex items-center rounded-l-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white" >Seleccionar color</label>
                             <select className='flex select items-center rounded-r-lg border border-slate-400 bg-slate-50 px-2 text-sm text-slate-500 transition-colors duration-300 peer-focus:border-sky-400 peer-focus:bg-sky-400 peer-focus:text-white' name="color" id="color" onChange={formik.handleChange}>
                                 <option value="">ninguno</option>
-                                <option value="Negro">Negro</option>
-                                <option value="Blanco">Blanco</option>
-                                <option value="Gris">Gris</option>
-                                <option value="Celeste">Celeste</option>
-                                <option value="Azul">Azul marino</option>
-                                <option value="Rojo">Rojo</option>
-                                <option value="Amarillo">Amarillo</option>
-                                <option value="Rosa">Rosa</option>
-                                <option value="Verde">Verde</option>
-                                <option value="Beige">Beige</option>
+                                {color.map((item) => (
+
+                                    <option key={item.id_Color} value={item.id_Color}>{item.Nom_Color}</option>
+
+                                ))
+                                }
                             </select>
                         </div>
                         {/* seleccion color */}
