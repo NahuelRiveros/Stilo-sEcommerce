@@ -4,7 +4,7 @@ import ProductCard from '../components/productCard'
 const ProductHome = ({ productos }) => {
 
     // Filtra los productos según la categoría seleccionada y el término de búsqueda
-
+    console.log(productos)
     return (
         <div className='py-10'>
 
@@ -27,7 +27,7 @@ const ProductHome = ({ productos }) => {
 
                     {/* Aqui se EJECUTAN las card desordenadas y se envia al componente card los datos necesarios por el props product */}
                     {
-                        productos.map((item) => (<ProductCard className="flex flex-col" key={item.id} product={item} />))
+                        productos.map((item) => (<ProductCard className="flex flex-col" key={item.id_Producto} product={item} />))
                     }
 
                 </div>
