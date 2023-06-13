@@ -75,7 +75,7 @@ const Product = ({ productos, searchQuery, category, size, color, brand, genero 
 
         {/* Aqui se EJECUTAN las card desordenadas y se envia al componente card los datos necesarios por el props product */}
         {
-          filteredProducts.map((item) => (<ProductCard className="flex flex-col" key={item.id} product={item} />))
+          filteredProducts.map((item) => (<ProductCard className="flex flex-col" key={item.id_Producto} product={item} />))
         }
 
       </div>
