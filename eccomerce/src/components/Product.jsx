@@ -4,14 +4,15 @@ import ProductCard from './productCard'
 const Product = ({ productos, searchQuery, category, size, color, brand, genero }) => {
 
   // Filtra los productos según la categoría seleccionada y el término de búsqueda
+  console.log(productos)
+  const filteredProducts = productos?.filter((product) => {
 
-  const filteredProducts = productos.filter((product) => {
-
-    const matchCategory = category ? product.category === category : true;
-    const matchSearchQuery = product.detalle.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchSize = size ? product.size === size : true;
-    const matchColor = color ? product.color.toLowerCase() === color : true;
-    const matchBrand = brand ? product.brand === brand : true;
+    const matchCategory = category ? product.Categoria_Producto?.Nom_Categoria === category : true;
+    const matchSearchQuery = product?.Detalle_Producto.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchSize = size ? product?.Talle_Producto?.Nom_Talle === size : true;
+    const matchColor = color ? product?.Color_Producto?.Nom_Color
+      .toLowerCase() === color.toLowerCase() : true;
+    const matchBrand = brand ? product?.Marca_Producto?.Nom_Marca === brand : true;
     console.log(`marca ${brand} -1>${product.brand} rta ${matchBrand} | categoria ${category} -2> ${product.category} rta ${matchCategory} || genero ${genero} `)
     console.log(`1 ${matchCategory} `)
     console.log(`2 ${matchSearchQuery}`)
@@ -19,7 +20,7 @@ const Product = ({ productos, searchQuery, category, size, color, brand, genero 
     console.log(`4 ${matchBrand}`)
     return matchCategory && matchSearchQuery && matchSize && matchColor && matchBrand;
   });
-  console.log(filteredProducts)
+  console.log({ filteredProducts })
   return (
     <div className='py-10'>
 

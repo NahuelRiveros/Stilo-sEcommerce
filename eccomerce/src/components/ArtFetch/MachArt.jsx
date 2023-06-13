@@ -7,32 +7,30 @@ import axios from 'axios'
 import Product from '../product'
 
 
-
 const FetArt = () => {
 
 
+    const [infoNavbarCategory, setInfoNavbarCate] = useState([])
+    const [infoNavbarMarca, setInfoNavbarMarca] = useState([])
+    const [infoNavbarGenero, setInfoNavbarGenero] = useState([])
+    const location = useLocation()
 
 
-    const [productos, setProductos] = useState()
+    const data = useLoaderData()
+
+    const [productos, setProductos] = useState(data || undefined)
+
+    //obtengo desde la ruta creada lo que envio desde App
+    //  console.log(data) obtienes todos los productos
     useEffect(() => {
-
+        setProductos(data)
+        setInfoNavbarCate(location.state.category)
+        setInfoNavbarMarca(location.state.brand)
+        setInfoNavbarGenero(location.state.genero)
     }, [])
 
-    const productBD = async (req, res) => {
-        const URI = "http://localhost:8000/stilos/homeGetProd/"
-        try {
-            await axios.get(URI).then((res) => {
-                const productos = res.data
-                console.log(res.data)
-                setProductos(productos)
-            })
-        } catch (err) {
-            console.log(err)
-        }
-    }
-    productBD()
     console.log(productos)
-
+    console.log(`nava->${infoNavbarCategory}nava1->${infoNavbarMarca}nava2->${infoNavbarGenero}`)
     // name: 'Camisa de mezclilla',
     // image: 'https://via.placeholder.com/150',
     // brand: 'Levi\'s',
@@ -40,6 +38,8 @@ const FetArt = () => {
     // color: 'rojo'
     // price: 1000,
     // ARTICULOS QUE EL CLIENTE PIDIO
+
+    console.log(productos)
 
     const [searchQuery, setSearchQuery] = useState('');
     const [articulo, setArticulo] = useState('');
@@ -59,15 +59,23 @@ const FetArt = () => {
                 color={color}
                 setColor={setColor}
             />
+
             <Product
+
                 productos={productos}
                 searchQuery={searchQuery}
                 size={size}
                 color={color}
-            // category={productos.Categoria_Producto.Nom_Categoria}
-            // brand={productos.Talle_Producto.Nom_Talle}
-            // genero={productos.Genero_Producto.Genero_Producto}
+                category={location.state.category}
+                brand={location.state.brand}
+                genero={location.state.genero}
+            // category={producto.Categoria_Producto.Nom_Categoria}
+            // brand={producto.Marca_Producto.Nom_Marca}
+            // genero={producto.Genero_Producto.Genero_Producto}
             />
+
+
+
         </div>
     );
 

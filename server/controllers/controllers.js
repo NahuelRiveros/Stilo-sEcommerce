@@ -178,6 +178,8 @@ export const getAllProductos = async (req, res) => {
             },
         ],
     });
+    const [objetoProducto] = productos;
+    const realProducto = objetoProducto.dataValues;
     console.log(productos);
     res.json(productos);
 };

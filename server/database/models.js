@@ -13,8 +13,7 @@ const datosCategoria = [
     { Nom_Categoria: "Bermuda" },
     { Nom_Categoria: "Chombas" },
     { Nom_Categoria: "Camisas" },
-    { Nom_Categoria: "Polleras" }
-
+    { Nom_Categoria: "Polleras" },
 ];
 
 const datosMarcas = [
@@ -58,11 +57,156 @@ const datosTalles = [
 ];
 
 const datosDescuentos = [
-    { Num_Descuento: 0, Display_Descuento: '0%' },
-    { Num_Descuento: 5, Display_Descuento: '5%' },
-    { Num_Descuento: 10, Display_Descuento: '10%' },
-    { Num_Descuento: 15, Display_Descuento: '15%' },
+    { Num_Descuento: 0, Display_Descuento: "0%" },
+    { Num_Descuento: 5, Display_Descuento: "5%" },
+    { Num_Descuento: 10, Display_Descuento: "10%" },
+    { Num_Descuento: 15, Display_Descuento: "15%" },
+];
 
+const testeoProductosDef = [
+    {
+        Existencia_Producto: 10,
+        Precio_Producto: 2500,
+        Detalle_Producto: "remerita buena",
+        fk_id_Color: 1,
+        fk_id_Genero: 1,
+        fk_id_Marca: 1,
+        fk_id_Talle: 1,
+        fk_id_Descuento: 1,
+        fk_id_Categoria: 1,
+    },
+    {
+        Existencia_Producto: 10,
+        Precio_Producto: 2500,
+        Detalle_Producto: "remera hermosa",
+        fk_id_Color: 5,
+        fk_id_Genero: 2,
+        fk_id_Marca: 9,
+        fk_id_Talle: 3,
+        fk_id_Descuento: 1,
+        fk_id_Categoria: 4,
+    },
+    {
+        Existencia_Producto: 10,
+        Precio_Producto: 2500,
+        Detalle_Producto: "pantalón cómodo",
+        fk_id_Color: 3,
+        fk_id_Genero: 1,
+        fk_id_Marca: 6,
+        fk_id_Talle: 2,
+        fk_id_Descuento: 1,
+        fk_id_Categoria: 2,
+    },
+    {
+        Existencia_Producto: 10,
+        Precio_Producto: 2500,
+        Detalle_Producto: "vestido elegante",
+        fk_id_Color: 7,
+        fk_id_Genero: 3,
+        fk_id_Marca: 11,
+        fk_id_Talle: 4,
+        fk_id_Descuento: 1,
+        fk_id_Categoria: 5,
+    },
+    {
+        Existencia_Producto: 10,
+        Precio_Producto: 2500,
+        Detalle_Producto: "camisa casual",
+        fk_id_Color: 2,
+        fk_id_Genero: 1,
+        fk_id_Marca: 8,
+        fk_id_Talle: 1,
+        fk_id_Descuento: 1,
+        fk_id_Categoria: 3,
+    },
+    {
+        Existencia_Producto: 10,
+        Precio_Producto: 2500,
+        Detalle_Producto: "chaqueta abrigada",
+        fk_id_Color: 6,
+        fk_id_Genero: 2,
+        fk_id_Marca: 4,
+        fk_id_Talle: 3,
+        fk_id_Descuento: 1,
+        fk_id_Categoria: 6,
+    },
+    {
+        Existencia_Producto: 10,
+        Precio_Producto: 2500,
+        Detalle_Producto: "zapatos elegantes",
+        fk_id_Color: 1,
+        fk_id_Genero: 3,
+        fk_id_Marca: 10,
+        fk_id_Talle: 5,
+        fk_id_Descuento: 1,
+        fk_id_Categoria: 1,
+    },
+    {
+        Existencia_Producto: 10,
+        Precio_Producto: 2500,
+        Detalle_Producto: "jeans ajustados",
+        fk_id_Color: 4,
+        fk_id_Genero: 1,
+        fk_id_Marca: 5,
+        fk_id_Talle: 3,
+        fk_id_Descuento: 1,
+        fk_id_Categoria: 2,
+    },
+    {
+        Existencia_Producto: 10,
+        Precio_Producto: 2500,
+        Detalle_Producto: "short deportivo",
+        fk_id_Color: 8,
+        fk_id_Genero: 2,
+        fk_id_Marca: 7,
+        fk_id_Talle: 2,
+        fk_id_Descuento: 1,
+        fk_id_Categoria: 3,
+    },
+    {
+        Existencia_Producto: 10,
+        Precio_Producto: 2500,
+        Detalle_Producto: "camiseta estampada",
+        fk_id_Color: 6,
+        fk_id_Genero: 1,
+        fk_id_Marca: 9,
+        fk_id_Talle: 1,
+        fk_id_Descuento: 1,
+        fk_id_Categoria: 4,
+    },
+    {
+        Existencia_Producto: 10,
+        Precio_Producto: 2500,
+        Detalle_Producto: "chaqueta de cuero",
+        fk_id_Color: 3,
+        fk_id_Genero: 3,
+        fk_id_Marca: 10,
+        fk_id_Talle: 4,
+        fk_id_Descuento: 1,
+        fk_id_Categoria: 6,
+    },
+    {
+        Existencia_Producto: 10,
+        Precio_Producto: 2500,
+        Detalle_Producto: "gorra deportiva",
+        fk_id_Color: 2,
+        fk_id_Genero: 2,
+        fk_id_Marca: 11,
+        fk_id_Talle: 3,
+        fk_id_Descuento: 1,
+        fk_id_Categoria: 5,
+    },
+    {
+        Existencia_Producto: 10,
+        Precio_Producto: 2500,
+        Detalle_Producto: "blusa de encaje",
+        fk_id_Color: 1,
+        fk_id_Genero: 1,
+        fk_id_Marca: 8,
+        fk_id_Talle: 2,
+        fk_id_Descuento: 1,
+        fk_id_Categoria: 1,
+    },
 ];
 
 export const tbPermisosUsers = db.define(
@@ -165,8 +309,8 @@ export const tbDescuentoProd = db.define(
         },
         Display_Descuento: {
             type: DataTypes.STRING,
-            allowNull: false
-        }
+            allowNull: false,
+        },
     },
     { freezeTableName: true }
 );
@@ -492,7 +636,7 @@ export const tbFactura = db.define(
                 model: "Carrito_Detalle",
                 key: "id_Carrito_Detalle",
             },
-        }
+        },
     },
     { freezeTableName: true }
 );
@@ -687,6 +831,21 @@ const crearDescuentosDefault = datosDescuentos.map((desc) => {
 });
 
 Promise.all(crearDescuentosDefault)
+    .then((results) => {
+        console.log("Registros creados exitosamente.");
+    })
+    .catch((error) => {
+        console.error("Error al buscar o crear los registros:", error);
+    });
+
+const crearProductosDefault = testeoProductosDef.map((prod) => {
+    return tbProducto.findOrCreate({
+        where: { Detalle_Producto: prod.Detalle_Producto },
+        defaults: prod,
+    });
+});
+
+Promise.all(crearProductosDefault)
     .then((results) => {
         console.log("Registros creados exitosamente.");
     })

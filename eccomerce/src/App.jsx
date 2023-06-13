@@ -263,43 +263,77 @@ const Layout = () => {
 
 
 
+// const [productosTest, setProductosTest] = useState([])
 
-const router = createBrowserRouter([{
-  path: '/',
-  element: <Layout />,
-  children: [
-    {
-      path: '/',
-      element: <Home />,
-      // loader: productBD,
-    },
-    {
-      path: 'infoProducto/:id',
-      element: <InfoPorducto />
-    },
-    {
-      path: 'card',
-      element: <Card />
-    },
-    {
-      path: '/login',
-      element: <Login />
-    },
-    {
-      path: '/Producto/:id',
-      element: <MachArt />
-      // loader: productBD,
-    }
-    , {
-      path: '/InsertProducto',
-      element: <CargaProducto />,
-    }
-    , {
-      path: '/DatoPersonales',
-      element: < CargaDatoPers />,
-    }
-  ]
-}])
+
+const productBD = async (req, res) => {
+  const URI = "http://localhost:8000/stilos/homeGetProd/"
+  try {
+    const response = await axios.get(URI);
+    const productos = response.data;
+    console.log(productos);
+    return productos
+
+  }
+  catch (err) {
+    console.log(err)
+  }
+}
+
+const productBDLoader = async () => {
+  return productBD()
+    .then((productos) => {
+      return productos;
+    })
+    .catch((error) => {
+      console.log(error);
+      return null;
+    });
+};
+// useEffect(() => {
+//   productBD()
+//   // setProductos(data)
+// }, [])
+// console.log(productBD())
+
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+        loader: productBDLoader,
+      },
+      {
+        path: 'infoProducto/:id',
+        element: <InfoPorducto />
+      },
+      {
+        path: 'card',
+        element: <Card />
+      },
+      {
+        path: '/login',
+        element: <Login />
+      },
+      {
+        path: '/Producto/:id',
+        element: <MachArt />,
+        loader: productBDLoader,
+      }
+      , {
+        path: '/InsertProducto',
+        element: <CargaProducto />,
+      }
+      , {
+        path: '/DatoPersonales',
+        element: < CargaDatoPers />,
+      }
+    ]
+  }])
 
 function App() {
 
