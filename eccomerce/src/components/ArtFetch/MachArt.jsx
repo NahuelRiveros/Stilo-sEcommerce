@@ -61,7 +61,6 @@ const FetArt = () => {
             />
 
             <Product
-
                 productos={productos}
                 searchQuery={searchQuery}
                 size={size}
