@@ -1,5 +1,15 @@
 import db from "./db.js";
 import { DataTypes } from "sequelize";
+import fs from 'fs';
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const imagenDefaultPath = path.join(__dirname, '../imgDefault/Imagen-Default.jpg');
+const imagenDefault = fs.readFileSync(imagenDefaultPath);
+
 
 const datosPermisos = [
     { id_PermisoUsuario: 1, Nivel_Permiso: "Admin" },
@@ -66,6 +76,7 @@ const datosDescuentos = [
 const testeoProductosDef = [
     {
         Existencia_Producto: 10,
+        Img_Producto: imagenDefault,
         Precio_Producto: 2500,
         Detalle_Producto: "remerita buena",
         fk_id_Color: 1,
@@ -77,6 +88,7 @@ const testeoProductosDef = [
     },
     {
         Existencia_Producto: 10,
+        Img_Producto: imagenDefault,
         Precio_Producto: 2500,
         Detalle_Producto: "remera hermosa",
         fk_id_Color: 5,
@@ -88,6 +100,7 @@ const testeoProductosDef = [
     },
     {
         Existencia_Producto: 10,
+        Img_Producto: imagenDefault,
         Precio_Producto: 2500,
         Detalle_Producto: "pantalón cómodo",
         fk_id_Color: 3,
@@ -99,6 +112,7 @@ const testeoProductosDef = [
     },
     {
         Existencia_Producto: 10,
+        Img_Producto: imagenDefault,
         Precio_Producto: 2500,
         Detalle_Producto: "vestido elegante",
         fk_id_Color: 7,
@@ -110,6 +124,7 @@ const testeoProductosDef = [
     },
     {
         Existencia_Producto: 10,
+        Img_Producto: imagenDefault,
         Precio_Producto: 2500,
         Detalle_Producto: "camisa casual",
         fk_id_Color: 2,
@@ -121,6 +136,7 @@ const testeoProductosDef = [
     },
     {
         Existencia_Producto: 10,
+        Img_Producto: imagenDefault,
         Precio_Producto: 2500,
         Detalle_Producto: "chaqueta abrigada",
         fk_id_Color: 6,
@@ -132,6 +148,7 @@ const testeoProductosDef = [
     },
     {
         Existencia_Producto: 10,
+        Img_Producto: imagenDefault,
         Precio_Producto: 2500,
         Detalle_Producto: "zapatos elegantes",
         fk_id_Color: 1,
@@ -143,6 +160,7 @@ const testeoProductosDef = [
     },
     {
         Existencia_Producto: 10,
+        Img_Producto: imagenDefault,
         Precio_Producto: 2500,
         Detalle_Producto: "jeans ajustados",
         fk_id_Color: 4,
@@ -154,6 +172,7 @@ const testeoProductosDef = [
     },
     {
         Existencia_Producto: 10,
+        Img_Producto: imagenDefault,
         Precio_Producto: 2500,
         Detalle_Producto: "short deportivo",
         fk_id_Color: 8,
@@ -165,6 +184,7 @@ const testeoProductosDef = [
     },
     {
         Existencia_Producto: 10,
+        Img_Producto: imagenDefault,
         Precio_Producto: 2500,
         Detalle_Producto: "camiseta estampada",
         fk_id_Color: 6,
@@ -176,6 +196,7 @@ const testeoProductosDef = [
     },
     {
         Existencia_Producto: 10,
+        Img_Producto: imagenDefault,
         Precio_Producto: 2500,
         Detalle_Producto: "chaqueta de cuero",
         fk_id_Color: 3,
@@ -187,6 +208,7 @@ const testeoProductosDef = [
     },
     {
         Existencia_Producto: 10,
+        Img_Producto: imagenDefault,
         Precio_Producto: 2500,
         Detalle_Producto: "gorra deportiva",
         fk_id_Color: 2,
@@ -198,6 +220,7 @@ const testeoProductosDef = [
     },
     {
         Existencia_Producto: 10,
+        Img_Producto: imagenDefault,
         Precio_Producto: 2500,
         Detalle_Producto: "blusa de encaje",
         fk_id_Color: 1,
@@ -838,17 +861,17 @@ Promise.all(crearDescuentosDefault)
         console.error("Error al buscar o crear los registros:", error);
     });
 
-// const crearProductosDefault = testeoProductosDef.map((prod) => {
-//     return tbProducto.findOrCreate({
-//         where: { Detalle_Producto: prod.Detalle_Producto },
-//         defaults: prod,
-//     });
-// });
+ const crearProductosDefault = testeoProductosDef.map((prod) => {
+     return tbProducto.findOrCreate({
+         where: { Detalle_Producto: prod.Detalle_Producto },
+         defaults: prod,
+     });
+ });
 
-// Promise.all(crearProductosDefault)
-//     .then((results) => {
-//         console.log("Registros creados exitosamente.");
-//     })
-//     .catch((error) => {
-//         console.error("Error al buscar o crear los registros:", error);
-//     });
+ Promise.all(crearProductosDefault)
+     .then((results) => {
+         console.log("Registros creados exitosamente.");
+     })
+     .catch((error) => {
+         console.error("Error al buscar o crear los registros:", error);
+     });
