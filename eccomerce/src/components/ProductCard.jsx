@@ -25,11 +25,16 @@ const ProductCard = ({ product }) => {
       }
     })
   }
+  console.log(product)
+
+
+
+
   return (
     <div className='group border shadow-lg bg-slate-100 relative'>
       <div className='w-full h-58 cursor-pointer overflow-hidden' onClick={handleDetalles}>
         <img className='w-full h-full object-cover group-hover:scale-110 duration-500'
-          src={product.Img_Producto} alt="productImg" />
+          src={`data:image/jpeg;base64,${product.image}`} alt="productImg" />
       </div>
       {/* FOOTER CARD */}
       <div className='w-full boder-[1px] px-2
@@ -49,7 +54,7 @@ const ProductCard = ({ product }) => {
               <span onClick={() => dispatch(addToCart({
                 id: product.id_Producto,
                 title: product.Detalle_Producto,
-                image: product.Img_Producto,
+                image: product.image,
                 marca: product.Marca_Producto.Nom_Marca,
                 price: product.Precio_Producto,
                 cantidad: 1
@@ -68,6 +73,7 @@ const ProductCard = ({ product }) => {
         </div>
         <div className='font-titleFont font-semibold'>
           <p>Categoria - {product.Categoria_Producto.Nom_Categoria}</p>
+          <p>Color - {product.Color_Producto.Nom_Color}</p>
         </div>
         <div className='absolute top-4 right-0 bg-orange-600'>
           <p>Talle {product.Talle_Producto.Nom_Talle}</p>
@@ -87,7 +93,7 @@ const ProductCard = ({ product }) => {
         pauseOnHover
         theme='dark'
       />
-    </div>
+    </div >
   )
 }
 

@@ -23,17 +23,34 @@ const CargaProducto = () => {
         cantidad: 0,
         image: null,
     };
-
+    const config = {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    };
     const formik = useFormik({
         initialValues,
         onSubmit: async (values) => {
+            const formData = new FormData();
+            formData.append('detalle_Producto', values.detalle_Producto);
+            formData.append('categoria', values.categoria);
+            formData.append('descuento', values.descuento);
+            formData.append('talle', values.talle);
+            formData.append('marca', values.marca);
+            formData.append('genero', values.genero);
+            formData.append('color', values.color);
+            formData.append('precio', values.precio);
+            formData.append('cantidad', values.cantidad);
+            formData.append('image', values.image);
+            console.log(formData.get('image'), values.image)
             console.log(parseInt(values.categoria), values);
             const URI = "http://localhost:8000/stilos/InsertProducto/";
-            await axios.post(URI, { values }).then((res) => {
-                if (!res.data.msg) {
-                    console.log("Error al cargar los datos")
+
+            await axios.post(URI, formData, config).then((res) => {
+                if (!res.data.error) {
+                    console.log(res.data)
                 } else {
-                    console.log('Se ha registrado correctamente')
+                    console.log(res.data.error)
                     // navigate('/')
                 }
             })
@@ -68,7 +85,7 @@ const CargaProducto = () => {
     return (
 
         <div>
-            <form onSubmit={formik.handleSubmit} className='max-w-none mx-auto flex flex-col '>
+            <form onSubmit={formik.handleSubmit} encType='multipart/form-data' className='max-w-none mx-auto flex flex-col '>
 
                 <div className="flex min-h-screen flex-col justify-center bg-[#0a1120] bg-[url('https://mini.codingcodax.dev/images/dark-beams.jpg')] bg-[length:86.125rem] bg-bottom bg-no-repeat p-4 ">
 

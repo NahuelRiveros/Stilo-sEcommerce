@@ -10,6 +10,9 @@ import {
     tbGeneroProd,
     tbDescuentoProd,
 } from "../database/models.js";
+import multer from "multer";
+import fs from "fs";
+const upload = multer({ dest: "uploads/" });
 
 export const registrarUsuario = async (req, res) => {
     try {
@@ -103,38 +106,24 @@ export const registrarPersona = async (req, res) => {
 };
 
 export const nuevoProducto = async (req, res) => {
-    const Producto = {
-        detalle_Producto: req.body.values.detalle_Producto,
-        categoria: parseInt(req.body.values.categoria),
-        descuento: parseInt(req.body.values.descuento),
-        talle: parseInt(req.body.values.talle),
-        marca: parseInt(req.body.values.marca),
-        genero: parseInt(req.body.values.genero),
-        color: parseInt(req.body.values.color),
-        precio: parseInt(req.body.values.precio),
-        cantidad: parseInt(req.body.values.cantidad),
-        image: req.body.image,
-    };
-    console.log(Producto);
-    try {
-        const AddingProd = await tbProducto.create({
-            Existencia_Producto: Producto.cantidad,
-            Img_Producto: Producto.image,
-            Precio_Producto: Producto.precio,
-            Detalle_Producto: Producto.detalle_Producto,
-            fk_id_Color: Producto.color,
-            fk_id_Genero: Producto.genero,
-            fk_id_Marca: Producto.marca,
-            fk_id_Talle: Producto.talle,
-            fk_id_Descuento: Producto.descuento,
-            fk_id_Categoria: Producto.categoria,
-        });
-
-        return res.json({ msg: "Se ha realizado con éxito" });
-    } catch (err) {
-        console.log(err);
-        return res.json({ msgerr: "Error en el servidor" });
-    }
+    // try {
+    //     const AddingProd = await tbProducto.create({
+    //         Existencia_Producto: Producto.cantidad,
+    //         Img_Producto: Producto.image,
+    //         Precio_Producto: Producto.precio,
+    //         Detalle_Producto: Producto.detalle_Producto,
+    //         fk_id_Color: Producto.color,
+    //         fk_id_Genero: Producto.genero,
+    //         fk_id_Marca: Producto.marca,
+    //         fk_id_Talle: Producto.talle,
+    //         fk_id_Descuento: Producto.descuento,
+    //         fk_id_Categoria: Producto.categoria,
+    //     });
+    //     return res.json({ msg: "Se ha realizado con éxito" });
+    // } catch (err) {
+    //     console.log(err);
+    //     return res.json({ msgerr: "Error en el servidor" });
+    // }
 };
 
 export const articuloInfo = async (req, res) => {
@@ -178,8 +167,15 @@ export const getAllProductos = async (req, res) => {
             },
         ],
     });
-    const [objetoProducto] = productos;
-    const realProducto = objetoProducto.dataValues;
-    console.log(productos);
-    res.json(productos);
+
+    const productosConImagen = productos.map((producto) => {
+        const productoData = producto.toJSON();
+        productoData.image = Buffer.from(productoData.Img_Producto).toString(
+            "base64"
+        );
+        return productoData;
+    });
+    console.log(productosConImagen);
+    // console.log(productosConImagen);
+    res.json(productosConImagen);
 };

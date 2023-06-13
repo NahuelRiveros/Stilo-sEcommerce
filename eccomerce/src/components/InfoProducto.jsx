@@ -26,7 +26,7 @@ const InfoPorducto = () => {
                     {detalles.Detalle_Producto}
                 </p>
                 <div className='w-3/5 md:w-2/5 relative'>
-                    <img className='w-full h-[400px] object-cover' src={detalles.Img_Producto} alt={detalles.Detalle_Producto} />
+                    <img className='w-full h-[400px] object-cover' src={`data:image/jpeg;base64,${detalles.image}`} alt={detalles.Detalle_Producto} />
                     {/* Aqui pordemos poner lo que necesitemos encaso de que sea oferta o algo parecido */}
                     <div className='top-5 right-0 absolute'>
                         <p className='bg-black text-white font-semibold font-bodyFont py-1 px-8'>

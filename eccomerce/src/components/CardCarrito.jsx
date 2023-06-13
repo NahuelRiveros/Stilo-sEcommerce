@@ -26,7 +26,7 @@ const CardCarrito = () => {
 
             {/* Remover item del carro */}
             <div className='flex  items-center gap-5'>
-              <img src={item.image} alt="itemCarro"
+              <img src={`data:image/jpeg;base64,${item.image}`} alt="itemCarro"
                 className='w-32 h-32 object-cover
                 max-[768px]:w-60 max-[768px]:h-60
                 max-[1024px]:w-96 max-[1024px]:h-96' />

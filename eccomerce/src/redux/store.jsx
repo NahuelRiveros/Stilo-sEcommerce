@@ -21,11 +21,12 @@ const persistedReducer = persistReducer(persistConfig, bazarRedcuer)
 
 // https://redux-toolkit.js.org/tutorials/quick-start
 export const store = configureStore({
-  reducer: {bazar:persistedReducer},
+  reducer: { bazar: persistedReducer },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+
       },
     }),
 })

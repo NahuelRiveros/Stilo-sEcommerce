@@ -73,6 +73,7 @@ export const links = [
           { name: "Taverniti", link: "/Remeras", id: 1 },
           { name: "Abstracta", link: "/Remeras", id: 2 },
           { name: "Gell", link: "/Remeras", id: 3 },
+          { name: "Bando", link: "/Remeras", id: 4 }
 
         ],
       },

@@ -838,17 +838,17 @@ Promise.all(crearDescuentosDefault)
         console.error("Error al buscar o crear los registros:", error);
     });
 
-const crearProductosDefault = testeoProductosDef.map((prod) => {
-    return tbProducto.findOrCreate({
-        where: { Detalle_Producto: prod.Detalle_Producto },
-        defaults: prod,
-    });
-});
+// const crearProductosDefault = testeoProductosDef.map((prod) => {
+//     return tbProducto.findOrCreate({
+//         where: { Detalle_Producto: prod.Detalle_Producto },
+//         defaults: prod,
+//     });
+// });
 
-Promise.all(crearProductosDefault)
-    .then((results) => {
-        console.log("Registros creados exitosamente.");
-    })
-    .catch((error) => {
-        console.error("Error al buscar o crear los registros:", error);
-    });
+// Promise.all(crearProductosDefault)
+//     .then((results) => {
+//         console.log("Registros creados exitosamente.");
+//     })
+//     .catch((error) => {
+//         console.error("Error al buscar o crear los registros:", error);
+//     });

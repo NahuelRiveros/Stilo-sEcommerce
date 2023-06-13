@@ -29,8 +29,8 @@ const FetArt = () => {
         setInfoNavbarGenero(location.state.genero)
     }, [])
 
-    console.log(productos)
-    console.log(`nava->${infoNavbarCategory}nava1->${infoNavbarMarca}nava2->${infoNavbarGenero}`)
+    // console.log(productos)
+    // console.log(`nava->${infoNavbarCategory}nava1->${infoNavbarMarca}nava2->${infoNavbarGenero}`)
     // name: 'Camisa de mezclilla',
     // image: 'https://via.placeholder.com/150',
     // brand: 'Levi\'s',
@@ -39,7 +39,7 @@ const FetArt = () => {
     // price: 1000,
     // ARTICULOS QUE EL CLIENTE PIDIO
 
-    console.log(productos)
+    // console.log(productos)
 
     const [searchQuery, setSearchQuery] = useState('');
     const [articulo, setArticulo] = useState('');
