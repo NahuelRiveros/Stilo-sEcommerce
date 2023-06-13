@@ -280,8 +280,33 @@ const productBD = async (req, res) => {
   }
 }
 
+const productBDFilter = async (req, res) => {
+  const URI = "http://localhost:8000/stilos/filterGetProd/"
+  try {
+    const response = await axios.get(URI);
+    const productos = response.data;
+    console.log(productos);
+    return productos
+
+  }
+  catch (err) {
+    console.log(err)
+  }
+}
+
 const productBDLoader = async () => {
   return productBD()
+    .then((productos) => {
+      return productos;
+    })
+    .catch((error) => {
+      console.log(error);
+      return null;
+    });
+};
+
+const productBDLoaderFilter = async () => {
+  return productBDFilter()
     .then((productos) => {
       return productos;
     })
@@ -322,7 +347,7 @@ const router = createBrowserRouter([
       {
         path: '/Producto/:id',
         element: <MachArt />,
-        loader: productBDLoader,
+        loader: productBDLoaderFilter,
       }
       , {
         path: '/InsertProducto',

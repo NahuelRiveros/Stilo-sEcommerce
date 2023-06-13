@@ -179,3 +179,45 @@ export const getAllProductos = async (req, res) => {
     // console.log(productosConImagen);
     res.json(productosConImagen);
 };
+
+export const getAllProductosFilter = async (req, res) => {
+    const productos = await tbProducto.findAll({
+        include: [
+            {
+                model: tbCategoriaProd,
+                attributes: ["Nom_Categoria"],
+            },
+            {
+                model: tbGeneroProd,
+                attributes: ["Genero_Producto"],
+            },
+            {
+                model: tbColorProd,
+                attributes: ["Nom_Color"],
+            },
+            {
+                model: tbMarcaProd,
+                attributes: ["Nom_Marca"],
+            },
+            {
+                model: tbTalleProd,
+                attributes: ["Nom_Talle"],
+            },
+            {
+                model: tbDescuentoProd,
+                attributes: ["Num_Descuento"],
+            },
+        ],
+    });
+
+    const productosConImagen = productos.map((producto) => {
+        const productoData = producto.toJSON();
+        productoData.image = Buffer.from(productoData.Img_Producto).toString(
+            "base64"
+        );
+        return productoData;
+    });
+    console.log(productosConImagen);
+    // console.log(productosConImagen);
+    res.json(productosConImagen);
+};

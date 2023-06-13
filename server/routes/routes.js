@@ -8,6 +8,7 @@ import {
     registrarPersona,
     articuloInfo,
     getAllProductos,
+    getAllProductosFilter,
 } from "../controllers/controllers.js";
 
 import multer from "multer";
@@ -19,6 +20,7 @@ rutas.post("/PersonaExiste/", PersonaExiste);
 rutas.post("/formularioPersona/", registrarPersona);
 rutas.get("/ObtArtInfo/", articuloInfo);
 rutas.get("/homeGetProd/", getAllProductos);
+rutas.get("/filterGetProd/", getAllProductosFilter);
 
 rutas.post("/InsertProducto/", upload.single("image"), async (req, res) => {
     // if (!req.file) {
