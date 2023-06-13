@@ -34,7 +34,7 @@ const ProductCard = ({ product }) => {
     <div className='group border shadow-lg bg-slate-100 relative'>
       <div className='w-full h-58 cursor-pointer overflow-hidden' onClick={handleDetalles}>
         <img className='w-full h-full object-cover group-hover:scale-110 duration-500'
-          src={`data:image/jpg;base64,${product.image}`} alt="productImg" />
+          src={`data:image/jpeg;base64,${product.image}`} alt="productImg" />
       </div>
       {/* FOOTER CARD */}
       <div className='w-full boder-[1px] px-2
