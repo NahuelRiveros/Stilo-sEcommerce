@@ -1,5 +1,5 @@
 import React from 'react'
-import { logo2, logoCards } from '../assets/logo'
+import { logo2, logoCards, stilo } from './logo'
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -17,7 +17,7 @@ const Footer = () => {
                 <div className='flex flex-col gap-7  items-center '>
                     <div className='cursor-pointer rounded-full w-16 group'>
 
-                        <img src={logo2} className=' rounded-full h-full object-cover group-hover:scale-125 duration-500' alt='logoEmp'></img>
+                        <img src={stilo} className=' rounded-full h-full object-cover group-hover:scale-125 duration-500' alt='logoEmp'></img>
                     </div>
                     <p className='text-white text-sm tracking-wide'>© MR.com</p>
                     <img src={logoCards} alt="imgMP" className='w-36' />

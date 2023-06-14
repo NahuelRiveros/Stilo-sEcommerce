@@ -1,15 +1,17 @@
 import db from "./db.js";
 import { DataTypes } from "sequelize";
-import fs from 'fs';
-import path, { dirname } from 'path'
-import { fileURLToPath } from 'url'
+import fs from "fs";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const imagenDefaultPath = path.join(__dirname, '../imgDefault/Imagen-Default.jpg');
+const imagenDefaultPath = path.join(
+    __dirname,
+    "../imgDefault/Imagen-Default.jpg"
+);
 const imagenDefault = fs.readFileSync(imagenDefaultPath);
-
 
 const datosPermisos = [
     { id_PermisoUsuario: 1, Nivel_Permiso: "Admin" },
@@ -252,7 +254,7 @@ const testeoProductosDef = [
         fk_id_Marca: 1,
         fk_id_Talle: 4,
         fk_id_Descuento: 1,
-        fk_id_Categoria: 1
+        fk_id_Categoria: 1,
     },
     {
         Existencia_Producto: 10,
@@ -264,7 +266,7 @@ const testeoProductosDef = [
         fk_id_Marca: 1,
         fk_id_Talle: 2,
         fk_id_Descuento: 1,
-        fk_id_Categoria: 1
+        fk_id_Categoria: 1,
     },
     {
         Existencia_Producto: 10,
@@ -276,7 +278,7 @@ const testeoProductosDef = [
         fk_id_Marca: 1,
         fk_id_Talle: 5,
         fk_id_Descuento: 1,
-        fk_id_Categoria: 1
+        fk_id_Categoria: 1,
     },
     {
         Existencia_Producto: 10,
@@ -288,7 +290,7 @@ const testeoProductosDef = [
         fk_id_Marca: 2,
         fk_id_Talle: 3,
         fk_id_Descuento: 1,
-        fk_id_Categoria: 1
+        fk_id_Categoria: 1,
     },
     {
         Existencia_Producto: 10,
@@ -300,7 +302,7 @@ const testeoProductosDef = [
         fk_id_Marca: 2,
         fk_id_Talle: 4,
         fk_id_Descuento: 1,
-        fk_id_Categoria: 1
+        fk_id_Categoria: 1,
     },
     {
         Existencia_Producto: 10,
@@ -312,7 +314,7 @@ const testeoProductosDef = [
         fk_id_Marca: 2,
         fk_id_Talle: 2,
         fk_id_Descuento: 1,
-        fk_id_Categoria: 1
+        fk_id_Categoria: 1,
     },
     {
         Existencia_Producto: 10,
@@ -324,7 +326,7 @@ const testeoProductosDef = [
         fk_id_Marca: 3,
         fk_id_Talle: 3,
         fk_id_Descuento: 1,
-        fk_id_Categoria: 1
+        fk_id_Categoria: 1,
     },
     {
         Existencia_Producto: 10,
@@ -336,7 +338,7 @@ const testeoProductosDef = [
         fk_id_Marca: 3,
         fk_id_Talle: 4,
         fk_id_Descuento: 1,
-        fk_id_Categoria: 1
+        fk_id_Categoria: 1,
     },
     {
         Existencia_Producto: 10,
@@ -348,7 +350,7 @@ const testeoProductosDef = [
         fk_id_Marca: 3,
         fk_id_Talle: 2,
         fk_id_Descuento: 1,
-        fk_id_Categoria: 4
+        fk_id_Categoria: 4,
     },
 ];
 
@@ -981,17 +983,17 @@ Promise.all(crearDescuentosDefault)
         console.error("Error al buscar o crear los registros:", error);
     });
 
- const crearProductosDefault = testeoProductosDef.map((prod) => {
-     return tbProducto.findOrCreate({
-         where: { Detalle_Producto: prod.Detalle_Producto },
-         defaults: prod,
-     });
- });
+// const crearProductosDefault = testeoProductosDef.map((prod) => {
+//     return tbProducto.findOrCreate({
+//         where: { Detalle_Producto: prod.Detalle_Producto },
+//         defaults: prod,
+//     });
+// });
 
- Promise.all(crearProductosDefault)
-     .then((results) => {
-         console.log("Registros creados exitosamente.");
-     })
-     .catch((error) => {
-         console.error("Error al buscar o crear los registros:", error);
-     });
+// Promise.all(crearProductosDefault)
+//     .then((results) => {
+//         console.log("Registros creados exitosamente.");
+//     })
+//     .catch((error) => {
+//         console.error("Error al buscar o crear los registros:", error);
+//     });

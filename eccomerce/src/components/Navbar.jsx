@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { User, logo1, logo2, logo3 } from '../assets/logo'
+import { User, stilo } from './logo'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { Link } from 'react-router-dom';
@@ -32,7 +32,7 @@ const Navbar = () => {
 
                         <Link to={'/'}>
                             <div>
-                                <img src={logo2} alt="logoEmp" className='w-16 rounded-full' />
+                                <img src={stilo} alt="logoEmp" className='w-16 rounded-full' />
                             </div>
                         </Link>
                     </div>

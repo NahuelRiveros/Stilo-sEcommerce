@@ -1,5 +1,5 @@
 import React from 'react'
-import { Google } from '../assets/logo';
+import { Google } from '../components/logo';
 import { ToastContainer, toast } from 'react-toastify';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
 import { useSelector, useDispatch } from 'react-redux';

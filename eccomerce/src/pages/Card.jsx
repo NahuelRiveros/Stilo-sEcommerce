@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { logoStilo } from '../assets/logo';
+import { logoStilo } from '../components/logo';
 import CardCarrito from '../components/CardCarrito';
 import { toast } from 'react-toastify';
 import StripeChekout from 'react-stripe-checkout';

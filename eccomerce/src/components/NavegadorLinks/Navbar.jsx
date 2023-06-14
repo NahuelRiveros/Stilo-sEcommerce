@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { User, logo1, logo2, logo3 } from '../../assets/logo'
+import { User, stilo } from '../logo'
 import { useSelector } from 'react-redux';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="flex items-center font-medium justify-between px-5 md:h-20 h-12">
         <div className="z-50 top-0 md:w-auto  w-full flex justify-between items-center">
           <Link to={'/'}>
-            <img src={logo2} alt="logo" className="md:cursor-pointer md:w-16 w-10 rounded-full" />
+            <img src={stilo} alt="logo" className="md:cursor-pointer md:w-16 w-10 rounded-full" />
           </Link>
           {/* ITEMS NAVBAR BURGER */}
 
