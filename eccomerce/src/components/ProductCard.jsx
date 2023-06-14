@@ -32,8 +32,8 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className='group border shadow-lg bg-slate-100 relative'>
-      <div className='w-full h-58 cursor-pointer overflow-hidden' onClick={handleDetalles}>
-        <img className='w-full h-full object-cover group-hover:scale-110 duration-500'
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}} className='w-full h-58 cursor-pointer overflow-hidden' onClick={handleDetalles}>
+        <img style={{ width: '350px', height: '350px', objectFit: 'contain'}} className='w-full h-full object-cover group-hover:scale-110 duration-500'
           src={`data:image/jpeg;base64,${product.image}`} alt="productImg" />
       </div>
       {/* FOOTER CARD */}
